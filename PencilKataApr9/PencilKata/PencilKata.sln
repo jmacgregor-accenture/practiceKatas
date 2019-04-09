@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PencilKata.Library", "PencilKata.Library\PencilKata.Library.csproj", "{B256F7D1-D557-43BD-9DAE-5F37960B9CEB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PencilKata.Desk", "PencilKata.Desk\PencilKata.Desk.csproj", "{B256F7D1-D557-43BD-9DAE-5F37960B9CEB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PencilKata.Test", "PencilKata.Test\PencilKata.Test.csproj", "{02664637-6119-4FC0-A47E-DD7F8642DABF}"
 EndProject
