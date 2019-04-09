@@ -24,5 +24,16 @@ namespace PencilKata.Test
             
             pencil.Durability.ShouldBeLessThan(25);
         }
+        
+        [Fact]
+        public void WhenWritingPencilReturnsInput()
+        {
+            var testString = "Seven";
+            var pencil = new Pencil();
+
+            var result = pencil.Write(testString);
+            
+            result.ShouldBe(testString);
+        }
     }
 }

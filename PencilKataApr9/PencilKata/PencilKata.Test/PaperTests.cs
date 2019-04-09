@@ -30,5 +30,7 @@ namespace PencilKata.Test
             
             paper.Contents.ShouldBe($"{firstString}{secondString}");
         }
+
+        
     }
 }
