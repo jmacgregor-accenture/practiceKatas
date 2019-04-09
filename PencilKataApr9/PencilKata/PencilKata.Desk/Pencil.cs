@@ -8,5 +8,10 @@ namespace PencilKata.Desk
         {
             Durability = 25;
         }
+
+        public void Write(string input)
+        {
+            Durability -= input.Length;
+        }
     }
 }
