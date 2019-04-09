@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PencilKata.Library", "PencilKata.Library\PencilKata.Library.csproj", "{B256F7D1-D557-43BD-9DAE-5F37960B9CEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PencilKata.Test", "PencilKata.Test\PencilKata.Test.csproj", "{02664637-6119-4FC0-A47E-DD7F8642DABF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B256F7D1-D557-43BD-9DAE-5F37960B9CEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B256F7D1-D557-43BD-9DAE-5F37960B9CEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B256F7D1-D557-43BD-9DAE-5F37960B9CEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B256F7D1-D557-43BD-9DAE-5F37960B9CEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02664637-6119-4FC0-A47E-DD7F8642DABF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02664637-6119-4FC0-A47E-DD7F8642DABF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02664637-6119-4FC0-A47E-DD7F8642DABF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02664637-6119-4FC0-A47E-DD7F8642DABF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
