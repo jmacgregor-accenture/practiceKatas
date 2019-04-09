@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PencilKata.Library
+namespace PencilKata.Desk
 {
     public class Paper
     {
