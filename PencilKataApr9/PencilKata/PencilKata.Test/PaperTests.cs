@@ -17,5 +17,18 @@ namespace PencilKata.Test
 
             paper.Contents.ShouldBe(testString);
         }
+
+        [Fact]
+        public void WhenWritingTextTwiceBothStringsAreAppendedToContents()
+        {
+            var firstString = "She sells sea shells";
+            var secondString = " down by the sea shore";
+            var paper = new Paper();
+            
+            paper.Write(firstString);
+            paper.Write(secondString);
+            
+            paper.Contents.ShouldBe($"{firstString}{secondString}");
+        }
     }
 }

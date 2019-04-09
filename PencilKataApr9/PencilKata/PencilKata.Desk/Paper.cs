@@ -8,7 +8,7 @@ namespace PencilKata.Library
         
         public void Write(string input)
         {
-            Contents = input;
+            Contents += input;
         }
 
         
