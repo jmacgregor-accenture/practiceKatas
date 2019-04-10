@@ -56,7 +56,7 @@ namespace PencilKata.Test
             paper.Contents.ShouldBe("Hotdog      ");
         }
 
-        [Fact(Skip = "Refactoring...")]
+        [Fact]
         public void WhenErasingOneOfTwoInstancesOnlyOneAndWhiteSpaceRemains()
         {
             var startingString = "This is test test";
