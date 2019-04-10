@@ -42,5 +42,18 @@ namespace PencilKata.Test
             
             paper.Contents.ShouldBe("    ");
         }
+
+        [Fact]
+        public void WhenErasingOneOfTwoWordsOnPaperFirstWordAndWhiteSpaceRemains()
+        {
+            var startingString = "Hotdog tests";
+            var stringToErase = "tests";
+            var paper = new Paper();
+            paper.Write(startingString);
+
+            paper.Erase(stringToErase);
+            
+            paper.Contents.ShouldBe("Hotdog      ");
+        }
     }
 }
