@@ -35,5 +35,16 @@ namespace PencilKata.Test
             
             result.ShouldBe(testString);
         }
+
+        [Fact]
+        public void WhenWritingPastDurabilityDurabilityShowsZero()
+        {
+            var testString = "Seven";
+            var pencil = new Pencil(2);
+
+            var result = pencil.Write(testString);
+
+            pencil.Durability.ShouldBe(0);
+        }
     }
 }

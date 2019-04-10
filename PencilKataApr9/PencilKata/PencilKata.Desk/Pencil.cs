@@ -8,10 +8,21 @@ namespace PencilKata.Desk
         {
             Durability = 25;
         }
+        
+        public Pencil(int startingDurability)
+        {
+            Durability = startingDurability;
+        }
 
         public string Write(string input)
         {
-            Durability -= input.Length;
+            foreach (var character in input)
+            {
+                if (Durability > 0)
+                {
+                    Durability -= 1;
+                }
+            }
             return input;
         }
     }
