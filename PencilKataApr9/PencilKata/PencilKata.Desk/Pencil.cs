@@ -20,22 +20,25 @@ namespace PencilKata.Desk
             {
                 var degradeValue = 0;
 
-                if (char.IsUpper(character))
+                if (char.IsWhiteSpace(character) == false)
                 {
-                    if (Durability > 1)
+                    if (char.IsUpper(character))
                     {
-                        Durability -= 2;
+                        if (Durability > 1)
+                        {
+                            Durability -= 2;
+                        }
+                        else
+                        {
+                            Durability -= 1;
+                        }
                     }
                     else
                     {
-                        Durability -= 1;
-                    }
-                }
-                else
-                {
-                    if (Durability > 0)
-                    {
-                        Durability -= 1;
+                        if (Durability > 0)
+                        {
+                            Durability -= 1;
+                        }
                     }
                 }
             }
