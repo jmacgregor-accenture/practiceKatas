@@ -20,30 +20,35 @@ namespace PencilKata.Desk
             
             foreach (var character in input)
             {
-
                 if (Durability > 0)
                 {
                     returnString += character;
+                    
+                    HandleDegradation(character);
                 }
                 else
                 {
                     returnString += " ";
-                }
-                
-                if (char.IsWhiteSpace(character) == false)
-                {
-                    if (char.IsUpper(character))
-                    {
-                        HandleUpperCaseDegradation();
-                    }
-                    else
-                    {
-                        HandleNonUppercaseDegradation();
-                    }
+                    continue;
                 }
             }
 
             return returnString;
+        }
+
+        private void HandleDegradation(char character)
+        {
+            if (char.IsWhiteSpace(character) == false)
+            {
+                if (char.IsUpper(character))
+                {
+                    HandleUpperCaseDegradation();
+                }
+                else
+                {
+                    HandleNonUppercaseDegradation();
+                }
+            }
         }
 
         private void HandleUpperCaseDegradation()
