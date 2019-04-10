@@ -31,6 +31,16 @@ namespace PencilKata.Test
             paper.Contents.ShouldBe($"{firstString}{secondString}");
         }
 
-        
+        [Fact]
+        public void WhenErasingOnlyWordOnPaperOnlyWhiteSpaceRemains()
+        {
+            var testString = "Test";
+            var paper = new Paper();
+            paper.Write(testString);
+
+            paper.Erase(testString);
+            
+            paper.Contents.ShouldBe("    ");
+        }
     }
 }

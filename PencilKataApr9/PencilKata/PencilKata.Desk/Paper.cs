@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 
 namespace PencilKata.Desk
 {
@@ -11,6 +12,18 @@ namespace PencilKata.Desk
             Contents += input;
         }
 
-        
+
+        public void Erase(string wordToErase)
+        {
+            var regex = new Regex(wordToErase, RegexOptions.RightToLeft);
+            var whiteSpace = string.Empty;
+
+            for (var i = 0; i < wordToErase.Length; i++)
+            {
+                whiteSpace += " ";
+            }
+            
+            Contents = regex.Replace(Contents, whiteSpace);
+        }
     }
 }
