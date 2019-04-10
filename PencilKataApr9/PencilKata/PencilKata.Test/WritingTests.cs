@@ -4,7 +4,7 @@ using Shouldly;
 
 namespace PencilKata.Test
 {
-    public class PencilTests
+    public class WritingTests
     {
         [Fact]
         public void WhenInstantiatingPencilItHasPointDurability()
