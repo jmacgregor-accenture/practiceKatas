@@ -17,13 +17,13 @@ namespace PencilKata.Desk
         public string Write(string input)
         {
             var returnString = string.Empty;
-            
+
             foreach (var character in input)
             {
                 if (Durability > 0)
                 {
                     returnString += character;
-                    
+
                     HandleDegradation(character);
                 }
                 else
@@ -65,10 +65,7 @@ namespace PencilKata.Desk
 
         private void HandleNonUppercaseDegradation()
         {
-            if (Durability > 0)
-            {
-                Durability -= 1;
-            }
+            Durability -= 1;
         }
     }
 }
