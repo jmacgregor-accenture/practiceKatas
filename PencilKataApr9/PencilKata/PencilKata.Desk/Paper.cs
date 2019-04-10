@@ -16,11 +16,9 @@ namespace PencilKata.Desk
 
         public void Erase(string wordToErase)
         {
-            var whiteSpace = GenerateWhiteSpace(wordToErase.Length);
             var lastIndex = Contents.LastIndexOf(wordToErase);
 
-            Contents = Contents.Remove(lastIndex, wordToErase.Length);
-            Contents = Contents.Insert(lastIndex, whiteSpace);
+            Contents = GetUpdatedContentString(lastIndex, wordToErase.Length);
         }
 
         private string GenerateWhiteSpace(int numberOfSpaces)
@@ -33,6 +31,17 @@ namespace PencilKata.Desk
             }
 
             return whiteSpace;
+        }
+
+        private string GetUpdatedContentString(int startingPoint, int charactersToErase)
+        {
+            var whiteSpace = GenerateWhiteSpace(charactersToErase);
+            var stringToUpdate = Contents;
+
+            var erasedString = stringToUpdate.Remove(startingPoint, charactersToErase);
+            var updatedString = erasedString.Insert(startingPoint, whiteSpace);
+
+            return updatedString;
         }
     }
 }
