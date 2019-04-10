@@ -46,5 +46,16 @@ namespace PencilKata.Test
 
             pencil.Durability.ShouldBe(0);
         }
+
+        [Fact]
+        public void WhenWritingUpperCaseDurabilityDegradesTwiceAsFast()
+        {
+            var testString = "SEV";
+            var pencil = new Pencil(5);
+
+            var result = pencil.Write(testString);
+            
+            pencil.Durability.ShouldBe(0);
+        }
     }
 }

@@ -8,7 +8,7 @@ namespace PencilKata.Desk
         {
             Durability = 25;
         }
-        
+
         public Pencil(int startingDurability)
         {
             Durability = startingDurability;
@@ -18,11 +18,28 @@ namespace PencilKata.Desk
         {
             foreach (var character in input)
             {
-                if (Durability > 0)
+                var degradeValue = 0;
+
+                if (char.IsUpper(character))
                 {
-                    Durability -= 1;
+                    if (Durability > 1)
+                    {
+                        Durability -= 2;
+                    }
+                    else
+                    {
+                        Durability -= 1;
+                    }
+                }
+                else
+                {
+                    if (Durability > 0)
+                    {
+                        Durability -= 1;
+                    }
                 }
             }
+
             return input;
         }
     }
