@@ -40,7 +40,7 @@ namespace PencilKata.Test
         public void WhenWritingPastDurabilityDurabilityShowsZero()
         {
             var testString = "Seven";
-            var pencil = new Pencil(2);
+            var pencil = new Pencil(2, 5);
 
             var result = pencil.Write(testString);
 
@@ -51,7 +51,7 @@ namespace PencilKata.Test
         public void WhenWritingUpperCaseDurabilityDegradesTwiceAsFast()
         {
             var testString = "SEV";
-            var pencil = new Pencil(5);
+            var pencil = new Pencil(5, 5);
 
             var result = pencil.Write(testString);
             
@@ -62,7 +62,7 @@ namespace PencilKata.Test
         public void WhenWritingSpacesDurabilityDoesNotDegrade()
         {
             var testString = "  ";
-            var pencil = new Pencil(5);
+            var pencil = new Pencil(5, 5);
 
             var result = pencil.Write(testString);
             
@@ -73,7 +73,7 @@ namespace PencilKata.Test
         public void WhenWritingPastDurabilityReturnIsWhiteSpaces()
         {
             var testString = "Seven";
-            var pencil = new Pencil(5);
+            var pencil = new Pencil(5, 5);
 
             var result = pencil.Write(testString);
             

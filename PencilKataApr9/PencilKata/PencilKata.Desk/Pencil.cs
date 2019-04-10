@@ -4,17 +4,20 @@ namespace PencilKata.Desk
     {
         public int Durability { get; set; }
         private int _maxDurability;
+        private int _length;
 
         public Pencil()
         {
             Durability = 25;
             _maxDurability = 25;
+            _length = 5;
         }
 
-        public Pencil(int startingDurability)
+        public Pencil(int startingDurability, int length)
         {
             Durability = startingDurability;
             _maxDurability = 25;
+            _length = length;
         }
 
         public string Write(string input)
@@ -67,7 +70,10 @@ namespace PencilKata.Desk
 
         public void Sharpen()
         {
-            Durability = _maxDurability;
+            if (_length > 0)
+            {
+                Durability = _maxDurability;
+            }
         }
     }
 }
