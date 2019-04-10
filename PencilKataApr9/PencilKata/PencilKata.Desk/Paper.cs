@@ -20,7 +20,7 @@ namespace PencilKata.Desk
             var lastIndex = Contents.LastIndexOf(wordToErase);
 
             Contents = Contents.Remove(lastIndex, wordToErase.Length);
-            Contents += whiteSpace;
+            Contents = Contents.Insert(lastIndex, whiteSpace);
         }
 
         private string GenerateWhiteSpace(int numberOfSpaces)

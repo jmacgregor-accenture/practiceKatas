@@ -68,5 +68,18 @@ namespace PencilKata.Test
             
             paper.Contents.ShouldBe("This is test     ");
         }
+
+        [Fact]
+        public void WhenErasingWordNotAtEndOfContentInsertsWhiteSpace()
+        {
+            var startingString = "This is test hamburgers";
+            var erasingString = "test";
+            var paper = new Paper();
+            paper.Write(startingString);
+            
+            paper.Erase(erasingString);
+            
+            paper.Contents.ShouldBe("This is      hamburgers");
+        }
     }
 }
