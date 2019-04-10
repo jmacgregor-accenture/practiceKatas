@@ -68,5 +68,16 @@ namespace PencilKata.Test
             
             pencil.Durability.ShouldBe(5);
         }
+
+        [Fact]
+        public void WhenWritingPastDurabilityReturnIsWhiteSpaces()
+        {
+            var testString = "Seven";
+            var pencil = new Pencil(5);
+
+            var result = pencil.Write(testString);
+            
+            result.ShouldBe("Seve ");
+        }
     }
 }

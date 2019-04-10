@@ -16,26 +16,37 @@ namespace PencilKata.Desk
 
         public string Write(string input)
         {
+            var returnString = string.Empty;
+            
             foreach (var character in input)
             {
 
+                if (Durability > 0)
+                {
+                    returnString += character;
+                }
+                else
+                {
+                    returnString += " ";
+                }
+                
                 if (char.IsWhiteSpace(character) == false)
                 {
                     if (char.IsUpper(character))
                     {
-                        HandleUpperCase();
+                        HandleUpperCaseDegradation();
                     }
                     else
                     {
-                        HandleNonUppercase();
+                        HandleNonUppercaseDegradation();
                     }
                 }
             }
 
-            return input;
+            return returnString;
         }
 
-        private void HandleUpperCase()
+        private void HandleUpperCaseDegradation()
         {
             if (Durability > 1)
             {
@@ -47,7 +58,7 @@ namespace PencilKata.Desk
             }
         }
 
-        private void HandleNonUppercase()
+        private void HandleNonUppercaseDegradation()
         {
             if (Durability > 0)
             {
