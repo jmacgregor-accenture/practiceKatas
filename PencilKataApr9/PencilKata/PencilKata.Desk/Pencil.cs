@@ -29,7 +29,6 @@ namespace PencilKata.Desk
                 else
                 {
                     returnString += " ";
-                    continue;
                 }
             }
 
@@ -46,7 +45,7 @@ namespace PencilKata.Desk
                 }
                 else
                 {
-                    HandleNonUppercaseDegradation();
+                    Durability -= 1;
                 }
             }
         }
@@ -61,11 +60,6 @@ namespace PencilKata.Desk
             {
                 Durability -= 1;
             }
-        }
-
-        private void HandleNonUppercaseDegradation()
-        {
-            Durability -= 1;
         }
     }
 }
