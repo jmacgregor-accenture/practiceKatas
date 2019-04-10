@@ -16,14 +16,21 @@ namespace PencilKata.Desk
         public void Erase(string wordToErase)
         {
             var regex = new Regex(wordToErase, RegexOptions.RightToLeft);
-            var whiteSpace = string.Empty;
+            var whiteSpace = GenerateWhiteSpace(wordToErase.Length);
+            
+            Contents = regex.Replace(Contents, whiteSpace);
+        }
 
-            for (var i = 0; i < wordToErase.Length; i++)
+        private string GenerateWhiteSpace(int numberOfSpaces)
+        {
+            var whiteSpace = string.Empty;
+            
+            for (var i = 0; i < numberOfSpaces; i++)
             {
                 whiteSpace += " ";
             }
-            
-            Contents = regex.Replace(Contents, whiteSpace);
+
+            return whiteSpace;
         }
     }
 }

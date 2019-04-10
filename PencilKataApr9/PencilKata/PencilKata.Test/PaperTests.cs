@@ -55,5 +55,7 @@ namespace PencilKata.Test
             
             paper.Contents.ShouldBe("Hotdog      ");
         }
+
+        
     }
 }
