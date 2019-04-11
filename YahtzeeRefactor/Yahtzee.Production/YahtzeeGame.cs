@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using System.Linq;
+
 namespace Yahtzee.Production
 {
     public class YahtzeeGame
@@ -16,6 +19,7 @@ namespace Yahtzee.Production
         public static int Yahtzee(params int[] dice)
         {
             int[] counts = new int[6];
+            
             foreach (int die in dice)
             {
                 counts[die - 1]++;
@@ -28,6 +32,18 @@ namespace Yahtzee.Production
             }
 
             return 0;
+        }
+
+        private static int[] LoadDice(params int[] dice)
+        {
+            int[] rolls = new int[6];
+            
+            foreach (int die in dice)
+            {
+                rolls[die - 1]++;
+            }
+
+            return rolls;
         }
 
         public static int Ones(int d1, int d2, int d3, int d4, int d5)
@@ -66,57 +82,48 @@ namespace Yahtzee.Production
             return s;
         }
 
-        protected int[] dice;
+        public Dictionary<int,int> dice;
 
         public YahtzeeGame(int d1, int d2, int d3, int d4, int d5)
         {
-            dice = new int[5];
-            dice[0] = d1;
-            dice[1] = d2;
-            dice[2] = d3;
-            dice[3] = d4;
-            dice[4] = d5;
+            dice = GetRollValues(d1, d2, d3, d4, d5);
+        }
+
+        private Dictionary<int, int> GetRollValues(params int[] diceValues)
+        {
+            var rollValue = new Dictionary<int,int>();
+
+            foreach (var die in diceValues)
+            {
+                if (rollValue.Keys.Contains(die))
+                {
+                    rollValue[die] += die;
+                }
+                else
+                {
+                    rollValue.Add(die,die);
+                }
+            }
+
+            return rollValue;
         }
 
         public int Fours()
         {
-            int sum = 0;
-
-            for (int at = 0; at != 5; at++)
-            {
-                if (dice[at] == 4)
-                {
-                    sum += 4;
-                }
-            }
-
-            return sum;
+            return dice[4];
         }
 
         public int Fives()
         {
-            int s = 0;
-
-            for (var i = 0; i < dice.Length; i++)
-            {
-                if (dice[i] == 5)
-                    s = s + 5;
-            }
-
-            return s;
+            return dice[5];
         }
 
         public int sixes()
         {
-            int sum = 0;
-
-            for (int at = 0; at < dice.Length; at++)
-            {
-                if (dice[at] == 6)
-                    sum = sum + 6;
-            }
-
-            return sum;
+            var score = 0;
+            var worked = dice.TryGetValue(6, out score);
+            
+            return score;
         }
 
         public static int ScorePair(int d1, int d2, int d3, int d4, int d5)
