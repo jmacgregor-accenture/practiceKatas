@@ -97,8 +97,9 @@ namespace Yahtzee.Production
 
         public int ScorePair()
         {
-
-            return 6;
+            var value = _dice.Where(die => die.Value >= 2).Take(2).Select(pair => pair.Key * 2);
+            
+            return value.Max();
         }
 
         public static int TwoPair(int d1, int d2, int d3, int d4, int d5)
