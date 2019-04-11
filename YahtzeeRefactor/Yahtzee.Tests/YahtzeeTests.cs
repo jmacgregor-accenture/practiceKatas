@@ -39,8 +39,8 @@ namespace Yahtzee.Tests
         [Fact]
         public void test_2s()
         {
-            Assert.Equal(4, YahtzeeGame.Twos(1, 2, 3, 2, 6));
-            Assert.Equal(10, YahtzeeGame.Twos(2, 2, 2, 2, 2));
+            Assert.Equal(4, new YahtzeeGame(1, 2, 3, 2, 6).Twos());
+            Assert.Equal(10, new YahtzeeGame(2, 2, 2, 2, 2).Twos());
         }
 
         [Fact]

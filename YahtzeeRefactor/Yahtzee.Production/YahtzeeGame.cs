@@ -47,15 +47,11 @@ namespace Yahtzee.Production
             return sum;
         }
 
-        public static int Twos(int d1, int d2, int d3, int d4, int d5)
+        public int Twos()
         {
-            int sum = 0;
-            if (d1 == 2) sum += 2;
-            if (d2 == 2) sum += 2;
-            if (d3 == 2) sum += 2;
-            if (d4 == 2) sum += 2;
-            if (d5 == 2) sum += 2;
-            return sum;
+            var worked = _dice.TryGetValue(2, out var score);
+            
+            return score;
         }
 
         public int Threes()
