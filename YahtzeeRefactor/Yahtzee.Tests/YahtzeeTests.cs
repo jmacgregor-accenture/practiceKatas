@@ -7,33 +7,6 @@ namespace Yahtzee.Tests
 {
     public class YahtzeeTests
     {
-        [Fact]
-        public void YahtzeeGame_OneThroughFive_DictionaryLoaded()
-        {
-            var yahtzee = new YahtzeeGame(1,2,3,4,5);
-            var expectedDictionary = new Dictionary<int, int>
-            {
-                {1,1},
-                {2,2},
-                {3,3},
-                {4,4},
-                {5,5}
-            };
-            
-            yahtzee.dice.ShouldBe(expectedDictionary);
-        }
-
-        [Fact]
-        public void YahtzeeGame_AllFives_DictionaryLoaded()
-        {
-            var yahtzee = new YahtzeeGame(5,5,5,5,5);
-            var expectedDictionary = new Dictionary<int, int>
-            {
-                {5,25}
-            };
-            
-            yahtzee.dice.ShouldBe(expectedDictionary);
-        }
         
         [Fact]
         public void Chance_scores_sum_of_all_dice()
@@ -96,9 +69,9 @@ namespace Yahtzee.Tests
         [Fact]
         public void sixes_test()
         {
-            Assert.Equal(0, new YahtzeeGame(4, 4, 4, 5, 5).sixes());
-            Assert.Equal(6, new YahtzeeGame(4, 4, 6, 5, 5).sixes());
-            Assert.Equal(18, new YahtzeeGame(6, 5, 6, 6, 5).sixes());
+            Assert.Equal(0, new YahtzeeGame(4, 4, 4, 5, 5).Sixes());
+            Assert.Equal(6, new YahtzeeGame(4, 4, 6, 5, 5).Sixes());
+            Assert.Equal(18, new YahtzeeGame(6, 5, 6, 6, 5).Sixes());
         }
 
         [Fact]

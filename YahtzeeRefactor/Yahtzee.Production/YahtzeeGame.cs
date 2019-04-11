@@ -82,11 +82,11 @@ namespace Yahtzee.Production
             return s;
         }
 
-        public Dictionary<int,int> dice;
+        private Dictionary<int,int> _dice;
 
         public YahtzeeGame(int d1, int d2, int d3, int d4, int d5)
         {
-            dice = GetRollValues(d1, d2, d3, d4, d5);
+            _dice = GetRollValues(d1, d2, d3, d4, d5);
         }
 
         private Dictionary<int, int> GetRollValues(params int[] diceValues)
@@ -110,18 +110,17 @@ namespace Yahtzee.Production
 
         public int Fours()
         {
-            return dice[4];
+            return _dice[4];
         }
 
         public int Fives()
         {
-            return dice[5];
+            return _dice[5];
         }
 
-        public int sixes()
+        public int Sixes()
         {
-            var score = 0;
-            var worked = dice.TryGetValue(6, out score);
+            var worked = _dice.TryGetValue(6, out var score);
             
             return score;
         }
