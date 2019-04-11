@@ -46,8 +46,8 @@ namespace Yahtzee.Tests
         [Fact]
         public void test_threes()
         {
-            Assert.Equal(6, YahtzeeGame.Threes(1, 2, 3, 2, 3));
-            Assert.Equal(12, YahtzeeGame.Threes(2, 3, 3, 3, 3));
+            Assert.Equal(6, new YahtzeeGame(1, 2, 3, 2, 3).Threes());
+            Assert.Equal(12, new YahtzeeGame(2, 3, 3, 3, 3).Threes());
         }
 
         [Fact]

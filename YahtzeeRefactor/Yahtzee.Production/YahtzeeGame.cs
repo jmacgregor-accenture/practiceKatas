@@ -34,18 +34,6 @@ namespace Yahtzee.Production
             return 0;
         }
 
-        private static int[] LoadDice(params int[] dice)
-        {
-            int[] rolls = new int[6];
-            
-            foreach (int die in dice)
-            {
-                rolls[die - 1]++;
-            }
-
-            return rolls;
-        }
-
         public static int Ones(int d1, int d2, int d3, int d4, int d5)
         {
             int sum = 0;
@@ -70,16 +58,11 @@ namespace Yahtzee.Production
             return sum;
         }
 
-        public static int Threes(int d1, int d2, int d3, int d4, int d5)
+        public int Threes()
         {
-            int s;
-            s = 0;
-            if (d1 == 3) s += 3;
-            if (d2 == 3) s += 3;
-            if (d3 == 3) s += 3;
-            if (d4 == 3) s += 3;
-            if (d5 == 3) s += 3;
-            return s;
+            var worked = _dice.TryGetValue(3, out var score);
+            
+            return score;
         }
 
         private Dictionary<int,int> _dice;
