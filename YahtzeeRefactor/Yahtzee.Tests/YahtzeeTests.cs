@@ -12,9 +12,9 @@ namespace Yahtzee.Tests
         public void Chance_scores_sum_of_all_dice()
         {
             int expected = 15;
-            int actual = YahtzeeGame.Chance(2, 3, 4, 5, 1);
+            int actual = new YahtzeeGame(2, 3, 4, 5, 1).Chance();
             Assert.Equal(expected, actual);
-            Assert.Equal(16, YahtzeeGame.Chance(3, 3, 4, 5, 1));
+            Assert.Equal(16, new YahtzeeGame(3, 3, 4, 5, 1).Chance());
         }
 
         [Fact]
