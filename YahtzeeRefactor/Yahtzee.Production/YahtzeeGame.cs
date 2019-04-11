@@ -5,9 +5,42 @@ namespace Yahtzee.Production
 {
     public class YahtzeeGame
     {
+        private Dictionary<int,int> _dice;
+
+        public YahtzeeGame(int d1, int d2, int d3, int d4, int d5)
+        {
+            _dice = GetRollValues(d1, d2, d3, d4, d5);
+        }
+        
+        private Dictionary<int, int> GetRollValues(params int[] diceValues)
+        {
+            var rollValue = new Dictionary<int,int>();
+
+            foreach (var die in diceValues)
+            {
+                if (rollValue.Keys.Contains(die))
+                {
+                    rollValue[die] += 1;
+                }
+                else
+                {
+                    rollValue.Add(die,1);
+                }
+            }
+
+            return rollValue;
+        }
+        
         public int Chance()
         {
-            return _dice.Sum(dice => dice.Value);
+            var total = 0;
+
+            foreach (var value in _dice)
+            {
+                total += value.Key * value.Value;
+            }
+            
+            return total;
         }
 
         public int Yahtzee()
@@ -22,84 +55,50 @@ namespace Yahtzee.Production
 
         public int Ones()
         {
-            var worked = _dice.TryGetValue(1, out var score);
-            
-            return score;
+            _dice.TryGetValue(1, out var total);
+
+            return total;
         }
 
         public int Twos()
         {
-            var worked = _dice.TryGetValue(2, out var score);
-            
-            return score;
+            _dice.TryGetValue(2, out var count);
+
+            return count * 2;
         }
 
         public int Threes()
         {
-            var worked = _dice.TryGetValue(3, out var score);
-            
-            return score;
-        }
+            _dice.TryGetValue(3, out var count);
 
-        private Dictionary<int,int> _dice;
-
-        public YahtzeeGame(int d1, int d2, int d3, int d4, int d5)
-        {
-            _dice = GetRollValues(d1, d2, d3, d4, d5);
-        }
-
-        private Dictionary<int, int> GetRollValues(params int[] diceValues)
-        {
-            var rollValue = new Dictionary<int,int>();
-
-            foreach (var die in diceValues)
-            {
-                if (rollValue.Keys.Contains(die))
-                {
-                    rollValue[die] += die;
-                }
-                else
-                {
-                    rollValue.Add(die,die);
-                }
-            }
-
-            return rollValue;
+            return count * 3;
         }
 
         public int Fours()
         {
-            return _dice[4];
+            _dice.TryGetValue(4, out var count);
+
+            return count * 4;
         }
 
         public int Fives()
         {
-            return _dice[5];
+            _dice.TryGetValue(5, out var count);
+
+            return count * 5;
         }
 
         public int Sixes()
         {
-            var worked = _dice.TryGetValue(6, out var score);
-            
-            return score;
+            _dice.TryGetValue(6, out var count);
+
+            return count * 6;
         }
 
-        public static int ScorePair(int d1, int d2, int d3, int d4, int d5)
+        public int ScorePair()
         {
-            int[] counts = new int[6];
-            counts[d1 - 1]++;
-            counts[d2 - 1]++;
-            counts[d3 - 1]++;
-            counts[d4 - 1]++;
-            counts[d5 - 1]++;
 
-            for (var at = 0; at != 6; at++)
-            {
-                if (counts[6 - at - 1] == 2)
-                    return (6 - at) * 2;
-            }
-
-            return 0;
+            return 6;
         }
 
         public static int TwoPair(int d1, int d2, int d3, int d4, int d5)

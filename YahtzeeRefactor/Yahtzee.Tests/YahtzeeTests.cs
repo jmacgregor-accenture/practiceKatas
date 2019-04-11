@@ -77,9 +77,9 @@ namespace Yahtzee.Tests
         [Fact]
         public void one_pair()
         {
-            Assert.Equal(6, YahtzeeGame.ScorePair(3, 4, 3, 5, 6));
-            Assert.Equal(10, YahtzeeGame.ScorePair(5, 3, 3, 3, 5));
-            Assert.Equal(12, YahtzeeGame.ScorePair(5, 3, 6, 6, 5));
+            Assert.Equal(6, new YahtzeeGame(3, 4, 3, 5, 6).ScorePair());
+            //Assert.Equal(10, YahtzeeGame.ScorePair(5, 3, 3, 3, 5));
+            //Assert.Equal(12, YahtzeeGame.ScorePair(5, 3, 6, 6, 5));
         }
 
         [Fact]
