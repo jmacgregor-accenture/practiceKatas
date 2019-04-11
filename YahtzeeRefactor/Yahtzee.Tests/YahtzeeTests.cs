@@ -21,10 +21,10 @@ namespace Yahtzee.Tests
         public void Yahtzee_scores_50()
         {
             int expected = 50;
-            int actual = YahtzeeGame.Yahtzee(4, 4, 4, 4, 4);
+            int actual = new YahtzeeGame(4, 4, 4, 4, 4).Yahtzee();
             Assert.Equal(expected, actual);
-            Assert.Equal(50, YahtzeeGame.Yahtzee(6, 6, 6, 6, 6));
-            Assert.Equal(0, YahtzeeGame.Yahtzee(6, 6, 6, 6, 3));
+            Assert.Equal(50, new YahtzeeGame(6, 6, 6, 6, 6).Yahtzee());
+            Assert.Equal(0, new YahtzeeGame(6, 6, 6, 6, 3).Yahtzee());
         }
 
         [Fact]

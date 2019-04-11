@@ -10,19 +10,11 @@ namespace Yahtzee.Production
             return _dice.Sum(dice => dice.Value);
         }
 
-        public static int Yahtzee(params int[] dice)
+        public int Yahtzee()
         {
-            int[] counts = new int[6];
-            
-            foreach (int die in dice)
+            if (_dice.Count == 1)
             {
-                counts[die - 1]++;
-            }
-
-            for (int i = 0; i != 6; i++)
-            {
-                if (counts[i] == 5)
-                    return 50;
+                return 50;
             }
 
             return 0;
