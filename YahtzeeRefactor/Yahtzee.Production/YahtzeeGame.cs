@@ -80,8 +80,8 @@ namespace Yahtzee.Production
 
         public int Fours()
         {
-            int sum;
-            sum = 0;
+            int sum = 0;
+
             for (int at = 0; at != 5; at++)
             {
                 if (dice[at] == 4)
@@ -145,6 +145,7 @@ namespace Yahtzee.Production
             counts[d3 - 1]++;
             counts[d4 - 1]++;
             counts[d5 - 1]++;
+
             int n = 0;
             int score = 0;
 
@@ -161,16 +162,13 @@ namespace Yahtzee.Production
             {
                 return score * 2;
             }
-            else
-            {
-                return 0;
-            }
+
+            return 0;
         }
 
         public static int FourOfAKind(int d1, int d2, int d3, int d4, int d5)
         {
-            int[] tallies;
-            tallies = new int[6];
+            int[] tallies = new int[6];
             tallies[d1 - 1]++;
             tallies[d2 - 1]++;
             tallies[d3 - 1]++;
@@ -188,8 +186,7 @@ namespace Yahtzee.Production
 
         public static int ThreeOfAKind(int d1, int d2, int d3, int d4, int d5)
         {
-            int[] t;
-            t = new int[6];
+            int[] t = new int[6];
             t[d1 - 1]++;
             t[d2 - 1]++;
             t[d3 - 1]++;
@@ -207,8 +204,7 @@ namespace Yahtzee.Production
 
         public static int SmallStraight(int d1, int d2, int d3, int d4, int d5)
         {
-            int[] tallies;
-            tallies = new int[6];
+            int[] tallies = new int[6];
             tallies[d1 - 1] += 1;
             tallies[d2 - 1] += 1;
             tallies[d3 - 1] += 1;
@@ -230,8 +226,7 @@ namespace Yahtzee.Production
 
         public static int LargeStraight(int d1, int d2, int d3, int d4, int d5)
         {
-            int[] tallies;
-            tallies = new int[6];
+            int[] tallies = new int[6];
             tallies[d1 - 1] += 1;
             tallies[d2 - 1] += 1;
             tallies[d3 - 1] += 1;
@@ -252,22 +247,20 @@ namespace Yahtzee.Production
 
         public static int FullHouse(int d1, int d2, int d3, int d4, int d5)
         {
-            int[] tallies;
             bool _2 = false;
-            int i;
             int _2_at = 0;
             bool _3 = false;
             int _3_at = 0;
 
 
-            tallies = new int[6];
+            int[] tallies = new int[6];
             tallies[d1 - 1] += 1;
             tallies[d2 - 1] += 1;
             tallies[d3 - 1] += 1;
             tallies[d4 - 1] += 1;
             tallies[d5 - 1] += 1;
 
-            for (i = 0; i != 6; i += 1)
+            for (var i = 0; i != 6; i += 1)
             {
                 if (tallies[i] == 2)
                 {
@@ -276,7 +269,7 @@ namespace Yahtzee.Production
                 }
             }
 
-            for (i = 0; i != 6; i += 1)
+            for (var i = 0; i != 6; i += 1)
             {
                 if (tallies[i] == 3)
                 {
