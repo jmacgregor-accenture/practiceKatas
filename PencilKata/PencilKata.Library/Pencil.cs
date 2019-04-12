@@ -10,7 +10,7 @@ namespace PencilKata.Library
         private int _pencilLength;
         private int _eraserSize;
         private int _lastErasedIndex = -1;
-        
+
         public Pencil(Paper paper, int durability, int initialLength, int eraserSize)
         {
             _paper = paper;
@@ -18,7 +18,6 @@ namespace PencilKata.Library
             _durability = _initialDurability;
             _pencilLength = initialLength;
             _eraserSize = eraserSize;
-
         }
 
         public void Write(string inputString)
@@ -61,6 +60,7 @@ namespace PencilKata.Library
             {
                 return;
             }
+
             var arrayThing = _paper.Text.ToCharArray();
 
             for (int i = 0; i < eraseText.Length; i++)
@@ -83,6 +83,7 @@ namespace PencilKata.Library
             {
                 return startingIndex;
             }
+
             var wordLengthIndexized = eraseText.Length - 1;
             return startingIndex + wordLengthIndexized;
         }
@@ -93,9 +94,10 @@ namespace PencilKata.Library
 
             for (var i = 0; i < newText.Length; i++)
             {
-                arrayOfText[_lastErasedIndex + i] = newText[i];
+                var editIndex = _lastErasedIndex + i;
+                arrayOfText[editIndex] = char.IsWhiteSpace(arrayOfText[editIndex]) ? newText[i] : '@';
+
             }
-            
             _paper.Text = new string(arrayOfText);
         }
     }
