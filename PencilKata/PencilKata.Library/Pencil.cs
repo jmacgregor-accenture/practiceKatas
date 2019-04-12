@@ -50,5 +50,18 @@ namespace PencilKata.Library
                 _pencilLength--;
             }
         }
+
+        public void Erase(string eraseText)
+        {
+            var index = _paper.Text.LastIndexOf(eraseText);
+            var arrayThing = _paper.Text.ToCharArray();
+
+            for (int i = 0; i < eraseText.Length; i++)
+            {
+                arrayThing[index + i] = ' ';
+            }
+
+            _paper.Text = new string(arrayThing);
+        }
     }
 }

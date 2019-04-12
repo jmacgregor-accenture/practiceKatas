@@ -126,6 +126,19 @@ namespace PencilKata.Tests
             
             _paper.Text.ShouldBe(expected);
         }
+
+        [Fact]
+        public void WhenErasingWordOnlyLastWordIsReplacedWithWhiteSpace()
+        {
+            SetupDesk(100,100);
+            var testString = "test text test";
+            var expected = "test text     ";
+            
+            _pencil.Write(testString);
+            _pencil.Erase("test");
+            
+            _paper.Text.ShouldBe(expected);
+        }
     }
 
     
