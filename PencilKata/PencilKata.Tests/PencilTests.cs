@@ -46,6 +46,20 @@ namespace PencilKata.Tests
             
             paper.Text.ShouldBe(expected);
         }
+
+        [Fact]
+        public void WhenWritingSpacesOrNewLinesDurabilityDoesNotDegrade()
+        {
+            var paper = new Paper();
+            var pencil = new Pencil(paper, 5);
+            var testString = "\n    Seventeen";
+            var expected = "\n    Seven    ";
+
+            pencil.Write(testString);
+            
+            paper.Text.ShouldBe(expected);
+
+        }
         
     }
 
