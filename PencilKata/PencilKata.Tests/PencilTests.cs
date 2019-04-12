@@ -164,6 +164,20 @@ namespace PencilKata.Tests
             
             _paper.Text.ShouldBe(testString);
         }
+
+        [Fact]
+        public void WhenEditingTheStringNewWordIsInsertedIntoPlaceOfLastErase()
+        {
+            SetupDesk(100, 100, 100);
+            var testString = "An apple a day keeps the doctor away!";
+            var expected = "An onion a day keeps the doctor away!";
+            
+            _pencil.Write(testString);
+            _pencil.Erase("apple");
+            _pencil.Edit("onion");
+            
+            _paper.Text.ShouldBe(expected);
+        }
     }
 
     

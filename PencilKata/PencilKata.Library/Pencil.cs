@@ -9,6 +9,7 @@ namespace PencilKata.Library
         private int _initialDurability;
         private int _pencilLength;
         private int _eraserSize;
+        private int _lastErasedIndex = -1;
         
         public Pencil(Paper paper, int durability, int initialLength, int eraserSize)
         {
@@ -66,8 +67,8 @@ namespace PencilKata.Library
             {
                 if (_eraserSize > 0)
                 {
-                    var indexToReplace = endingIndex - i;
-                    arrayThing[indexToReplace] = ' ';
+                    _lastErasedIndex = endingIndex - i;
+                    arrayThing[_lastErasedIndex] = ' ';
                     _eraserSize--;
                 }
             }
@@ -84,6 +85,18 @@ namespace PencilKata.Library
             }
             var wordLengthIndexized = eraseText.Length - 1;
             return startingIndex + wordLengthIndexized;
+        }
+
+        public void Edit(string newText)
+        {
+            var arrayOfText = _paper.Text.ToCharArray();
+
+            for (var i = 0; i < newText.Length; i++)
+            {
+                arrayOfText[_lastErasedIndex + i] = newText[i];
+            }
+            
+            _paper.Text = new string(arrayOfText);
         }
     }
 }
