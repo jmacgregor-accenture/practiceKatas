@@ -18,7 +18,24 @@ namespace PencilKata.Tests
 
             paper.Text.ShouldBe(testString);
         }
+
+        [Fact]
+        public void WhenWritingAnAdditionalTimeAppendNewText()
+        {
+            var paper = new Paper();
+            var pencil = new Pencil(paper);
+            var testString1 = "She sells sea shells";
+            var testString2 = " and other stuff";
+            
+            pencil.Write(testString1);
+            pencil.Write(testString2);
+            
+            paper.Text.ShouldBe("She sells sea shells and other stuff");
+
+        }
+        
     }
 
+    
     
 }

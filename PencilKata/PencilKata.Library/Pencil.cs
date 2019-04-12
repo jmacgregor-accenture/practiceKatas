@@ -13,7 +13,7 @@ namespace PencilKata.Library
 
         public void Write(string inputString)
         {
-            Paper.Text = inputString;
+            Paper.Text += inputString;
         }
     }
 }
