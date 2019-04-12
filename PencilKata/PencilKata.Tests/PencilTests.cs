@@ -109,6 +109,23 @@ namespace PencilKata.Tests
             
             _paper.Text.ShouldBe(expected);
         }
+        
+        [Fact]
+        public void PencilLosesLengthOnEachSharpening()
+        {
+            SetupDesk(5,1);
+
+            var testString = "Text";
+            var expected = "TextText    ";
+            
+            _pencil.Write(testString);
+            _pencil.Sharpen();
+            _pencil.Write(testString);
+            _pencil.Sharpen();
+            _pencil.Write(testString);
+            
+            _paper.Text.ShouldBe(expected);
+        }
     }
 
     

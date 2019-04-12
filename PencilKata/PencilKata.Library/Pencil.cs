@@ -47,6 +47,7 @@ namespace PencilKata.Library
             if (_pencilLength > 0)
             {
                 _durability = _initialDurability;
+                _pencilLength--;
             }
         }
     }
