@@ -4,12 +4,12 @@ namespace PencilKata.Library
 {
     public class Pencil
     {
-        public Paper Paper { get; set; }
+        private Paper _paper;
         private int _durability;
         
         public Pencil(Paper paper, int durability)
         {
-            Paper = paper;
+            _paper = paper;
             _durability = durability;
         }
 
@@ -19,7 +19,7 @@ namespace PencilKata.Library
             {
                 if (_durability > 0)
                 {
-                    Paper.Text += character;
+                    _paper.Text += character;
                     if (!char.IsWhiteSpace(character))
                     {
                         _durability--;
@@ -27,7 +27,7 @@ namespace PencilKata.Library
                 }
                 else
                 {
-                    Paper.Text += ' ';
+                    _paper.Text += ' ';
                 }
             }
         }

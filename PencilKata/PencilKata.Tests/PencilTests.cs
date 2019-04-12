@@ -7,57 +7,62 @@ namespace PencilKata.Tests
 {
     public class PencilTests
     {
+        private Paper _paper;
+        private Pencil _pencil;
+
+        private void SetupDesk(int durability)
+        {
+            _paper = new Paper();
+            _pencil = new Pencil(_paper, durability);
+        }
+        
         [Fact]
         public void WhenWritingOnPaperTextIsAdded()
         {
             var testString = "She sells sea shells";
-            var paper = new Paper();
-            var pencil = new Pencil(paper, 25);
+            SetupDesk(25);
 
-            pencil.Write(testString);
+            _pencil.Write(testString);
 
-            paper.Text.ShouldBe(testString);
+            _paper.Text.ShouldBe(testString);
         }
 
         [Fact]
         public void WhenWritingAnAdditionalTimeAppendNewText()
         {
-            var paper = new Paper();
-            var pencil = new Pencil(paper, 100);
+            SetupDesk(100);
             var testString1 = "She sells sea shells";
             var testString2 = " and other stuff";
             
-            pencil.Write(testString1);
-            pencil.Write(testString2);
+            _pencil.Write(testString1);
+            _pencil.Write(testString2);
             
-            paper.Text.ShouldBe("She sells sea shells and other stuff");
+            _paper.Text.ShouldBe("She sells sea shells and other stuff");
 
         }
 
         [Fact]
         public void WhenWritingMoreCharactersThanDurabilityAddsSpacesNotCharacters()
         {
-            var paper = new Paper();
-            var pencil = new Pencil(paper, 5);
+            SetupDesk(5);
             var testString = "Seventeen";
             var expected = "Seven    ";
             
-            pencil.Write(testString);
+            _pencil.Write(testString);
             
-            paper.Text.ShouldBe(expected);
+            _paper.Text.ShouldBe(expected);
         }
 
         [Fact]
         public void WhenWritingSpacesOrNewLinesDurabilityDoesNotDegrade()
         {
-            var paper = new Paper();
-            var pencil = new Pencil(paper, 5);
+            SetupDesk(5);
             var testString = "\n    Seventeen";
             var expected = "\n    Seven    ";
 
-            pencil.Write(testString);
+            _pencil.Write(testString);
             
-            paper.Text.ShouldBe(expected);
+            _paper.Text.ShouldBe(expected);
 
         }
         
