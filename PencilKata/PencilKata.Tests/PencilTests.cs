@@ -152,6 +152,18 @@ namespace PencilKata.Tests
             
             _paper.Text.ShouldBe(expected);
         }
+
+        [Fact]
+        public void DoNotEraseAnythingIfErasedStringNotFound()
+        {
+            SetupDesk(100, 100, 100);
+            var testString = "test test test";
+            
+            _pencil.Write(testString);
+            _pencil.Erase("Tossed");
+            
+            _paper.Text.ShouldBe(testString);
+        }
     }
 
     
