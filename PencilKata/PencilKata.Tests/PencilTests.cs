@@ -45,8 +45,8 @@ namespace PencilKata.Tests
         public void WhenWritingMoreCharactersThanDurabilityAddsSpacesNotCharacters()
         {
             SetupDesk(5);
-            var testString = "Seventeen";
-            var expected = "Seven    ";
+            var testString = "seventeen";
+            var expected = "seven    ";
             
             _pencil.Write(testString);
             
@@ -57,13 +57,25 @@ namespace PencilKata.Tests
         public void WhenWritingSpacesOrNewLinesDurabilityDoesNotDegrade()
         {
             SetupDesk(5);
-            var testString = "\n    Seventeen";
-            var expected = "\n    Seven    ";
+            var testString = "\n    seventeen";
+            var expected = "\n    seven    ";
 
             _pencil.Write(testString);
             
             _paper.Text.ShouldBe(expected);
 
+        }
+
+        [Fact]
+        public void WhenWritingCapitalLettersPointDegradesTwiceAsFast()
+        {
+            SetupDesk(5);
+            var testString = "Seven";
+            var expectedString = "Seve ";
+            
+            _pencil.Write(testString);
+            
+            _paper.Text.ShouldBe(expectedString);
         }
         
     }
