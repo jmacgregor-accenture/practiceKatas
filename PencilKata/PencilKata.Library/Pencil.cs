@@ -14,6 +14,7 @@ namespace PencilKata.Library
             _paper = paper;
             _initialDurability = durability;
             _durability = _initialDurability;
+            _pencilLength = initialLength;
 
         }
 
@@ -43,7 +44,10 @@ namespace PencilKata.Library
 
         public void Sharpen()
         {
-            _durability = _initialDurability;
+            if (_pencilLength > 0)
+            {
+                _durability = _initialDurability;
+            }
         }
     }
 }
