@@ -10,17 +10,17 @@ namespace PencilKata.Tests
         private Paper _paper;
         private Pencil _pencil;
 
-        private void SetupDesk(int durability, int initialLength)
+        private void SetupDesk(int durability, int initialLength, int eraserSize)
         {
             _paper = new Paper();
-            _pencil = new Pencil(_paper, durability, initialLength);
+            _pencil = new Pencil(_paper, durability, initialLength, eraserSize);
         }
         
         [Fact]
         public void WhenWritingOnPaperTextIsAdded()
         {
             var testString = "She sells sea shells";
-            SetupDesk(25, 100);
+            SetupDesk(25, 100, 100);
 
             _pencil.Write(testString);
 
@@ -30,7 +30,7 @@ namespace PencilKata.Tests
         [Fact]
         public void WhenWritingAnAdditionalTimeAppendNewText()
         {
-            SetupDesk(100, 100);
+            SetupDesk(100, 100, 100);
             var testString1 = "She sells sea shells";
             var testString2 = " and other stuff";
             
@@ -44,7 +44,7 @@ namespace PencilKata.Tests
         [Fact]
         public void WhenWritingMoreCharactersThanDurabilityAddsSpacesNotCharacters()
         {
-            SetupDesk(5, 100);
+            SetupDesk(5, 100, 109);
             var testString = "seventeen";
             var expected = "seven    ";
             
@@ -56,7 +56,7 @@ namespace PencilKata.Tests
         [Fact]
         public void WhenWritingSpacesOrNewLinesDurabilityDoesNotDegrade()
         {
-            SetupDesk(5, 100);
+            SetupDesk(5, 100, 100 );
             var testString = "\n    seventeen";
             var expected = "\n    seven    ";
 
@@ -69,7 +69,7 @@ namespace PencilKata.Tests
         [Fact]
         public void WhenWritingCapitalLettersPointDegradesTwiceAsFast()
         {
-            SetupDesk(5, 100);
+            SetupDesk(5, 100, 100);
             var testString = "Seven";
             var expectedString = "Seve ";
             
@@ -82,7 +82,7 @@ namespace PencilKata.Tests
         public void PencilCanBeSharpenedToRestoreOriginalPointyness()
         {
             Paper paper = new Paper();
-            Pencil stubby = new Pencil(paper,5, 2);
+            Pencil stubby = new Pencil(paper,5, 2, 100);
             var testString = "Texts";
             var secondTestString = "Seven";
             var expected = "Text Seve ";
@@ -98,7 +98,7 @@ namespace PencilKata.Tests
         [Fact]
         public void PencilCanOnlyBeSharpenedWhenLengthIsMoreThanZero()
         {
-            SetupDesk(5,0);
+            SetupDesk(5,0, 100);
 
             var testString = "Text";
             var expected = "Text    ";
@@ -113,7 +113,7 @@ namespace PencilKata.Tests
         [Fact]
         public void PencilLosesLengthOnEachSharpening()
         {
-            SetupDesk(5,1);
+            SetupDesk(5,1, 100);
 
             var testString = "Text";
             var expected = "TextText    ";
@@ -130,9 +130,22 @@ namespace PencilKata.Tests
         [Fact]
         public void WhenErasingWordOnlyLastWordIsReplacedWithWhiteSpace()
         {
-            SetupDesk(100,100);
+            SetupDesk(100,100, 100);
             var testString = "test text test";
             var expected = "test text     ";
+            
+            _pencil.Write(testString);
+            _pencil.Erase("test");
+            
+            _paper.Text.ShouldBe(expected);
+        }
+
+        [Fact]
+        public void ErasersHaveDegradationTooAndErasingWorksFromEndOfWordToBeAJerk()
+        {
+            SetupDesk(100, 100, 2);
+            var testString = "test text test";
+            var expected = "test text te  ";
             
             _pencil.Write(testString);
             _pencil.Erase("test");

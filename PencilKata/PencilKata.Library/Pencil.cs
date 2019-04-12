@@ -8,13 +8,15 @@ namespace PencilKata.Library
         private int _durability;
         private int _initialDurability;
         private int _pencilLength;
+        private int _eraserSize;
         
-        public Pencil(Paper paper, int durability, int initialLength)
+        public Pencil(Paper paper, int durability, int initialLength, int eraserSize)
         {
             _paper = paper;
             _initialDurability = durability;
             _durability = _initialDurability;
             _pencilLength = initialLength;
+            _eraserSize = eraserSize;
 
         }
 
@@ -58,7 +60,11 @@ namespace PencilKata.Library
 
             for (int i = 0; i < eraseText.Length; i++)
             {
-                arrayThing[index + i] = ' ';
+                if (_eraserSize > 0)
+                {
+                    arrayThing[index + eraseText.Length - 1 - i] = ' ';
+                    _eraserSize--;
+                }
             }
 
             _paper.Text = new string(arrayThing);
