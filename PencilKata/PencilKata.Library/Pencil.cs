@@ -6,11 +6,15 @@ namespace PencilKata.Library
     {
         private Paper _paper;
         private int _durability;
+        private int _initialDurability;
+        private int _pencilLength;
         
-        public Pencil(Paper paper, int durability)
+        public Pencil(Paper paper, int durability, int initialLength)
         {
             _paper = paper;
-            _durability = durability;
+            _initialDurability = durability;
+            _durability = _initialDurability;
+
         }
 
         public void Write(string inputString)
@@ -35,6 +39,11 @@ namespace PencilKata.Library
                     _paper.Text += ' ';
                 }
             }
+        }
+
+        public void Sharpen()
+        {
+            _durability = _initialDurability;
         }
     }
 }
