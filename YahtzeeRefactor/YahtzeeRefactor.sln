@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YahtzeeRefactor.Library", "YahtzeeRefactor.Library\YahtzeeRefactor.Library.csproj", "{5924271B-2ACA-4C92-855A-F8BF0F952475}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YahtzeeRefactor.Tests", "YahtzeeRefactor.Tests\YahtzeeRefactor.Tests.csproj", "{67BF16D0-7DFA-41A4-8D77-36E50BDB730A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5924271B-2ACA-4C92-855A-F8BF0F952475}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5924271B-2ACA-4C92-855A-F8BF0F952475}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5924271B-2ACA-4C92-855A-F8BF0F952475}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5924271B-2ACA-4C92-855A-F8BF0F952475}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67BF16D0-7DFA-41A4-8D77-36E50BDB730A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67BF16D0-7DFA-41A4-8D77-36E50BDB730A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67BF16D0-7DFA-41A4-8D77-36E50BDB730A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67BF16D0-7DFA-41A4-8D77-36E50BDB730A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
