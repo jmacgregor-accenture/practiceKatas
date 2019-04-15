@@ -5,10 +5,12 @@ namespace PencilKata.Library
     public class Pencil
     {
         private int _pointDurability;
+        private int _maxDurabilty;
 
         public Pencil(int durability)
         {
             _pointDurability = durability;
+            _maxDurabilty = durability;
         }
 
         public string Write(string input)
@@ -44,6 +46,14 @@ namespace PencilKata.Library
         public void Write(Paper paper, string input)
         {
             paper.Contents += Write(input);
+        }
+
+        public void Sharpen()
+        {
+            if (_pointDurability < _maxDurabilty)
+            {
+                _pointDurability = _maxDurabilty;
+            }
         }
     }
 }
