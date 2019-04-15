@@ -9,7 +9,7 @@ namespace PencilKata.Tests
         [Fact]
         public void WhenPencilWritesTextIsReturned()
         {
-            var pencil = new Pencil();
+            var pencil = new Pencil(100);
             var testString = "Hello am a string";
 
             var result = pencil.Write(testString);
@@ -20,7 +20,7 @@ namespace PencilKata.Tests
         [Fact]
         public void WhenPencilWritesOnPaperTextAppearsOnPaper()
         {
-            var pencil = new Pencil();
+            var pencil = new Pencil(100);
             var paper = new Paper();
             var testString = "Hello I am a string too";
 
@@ -32,7 +32,7 @@ namespace PencilKata.Tests
         [Fact]
         public void WhenPencilWritesOnPaperItAddsToExistingContents()
         {
-            var pencil = new Pencil();
+            var pencil = new Pencil(100);
             var paper = new Paper();
             var firstString = "This is the start";
             var secondString = " and this is the end";
@@ -41,6 +41,17 @@ namespace PencilKata.Tests
             pencil.Write(paper, secondString);
             
             paper.Contents.ShouldBe("This is the start and this is the end");
+        }
+
+        [Fact]
+        public void WhenPencilWritesThePointDegrades()
+        {
+            var pencil = new Pencil(5);
+            var testString = "Mouse Squad";
+
+            var result = pencil.Write(testString);
+
+            result.ShouldBe("Mouse      ");
         }
     }
 }
