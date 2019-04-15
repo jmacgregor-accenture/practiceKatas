@@ -53,5 +53,16 @@ namespace PencilKata.Tests
 
             result.ShouldBe("Mouse      ");
         }
+
+        [Fact]
+        public void WhenPencilWritesThePointDoesNotDegradeFromWhiteSpace()
+        {
+            var pencil = new Pencil(7);
+            var testString = "Mouse Squad";
+
+            var result = pencil.Write(testString);
+            
+            result.ShouldBe("Mouse Sq   ");
+        }
     }
 }
