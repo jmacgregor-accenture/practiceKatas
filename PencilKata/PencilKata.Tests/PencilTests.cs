@@ -6,13 +6,26 @@ namespace PencilKata.Tests
 {
     public class PencilTests
     {
+        private Pencil _pencil;
+        private Paper _paper;
+
+        private void SetupDesk(int pencilDurability, int pencilLength, bool addPaper)
+        {
+            _pencil = new Pencil(pencilDurability, pencilLength);
+
+            if (addPaper)
+            {
+                _paper = new Paper();
+            }
+        }
+        
         [Fact]
         public void WhenPencilWritesTextIsReturned()
         {
-            var pencil = new Pencil(100, 5);
+            SetupDesk(100, 5, false);
             var testString = "Hello am a string";
 
-            var result = pencil.Write(testString);
+            var result = _pencil.Write(testString);
             
             result.ShouldBe(testString);
         }
@@ -20,36 +33,34 @@ namespace PencilKata.Tests
         [Fact]
         public void WhenPencilWritesOnPaperTextAppearsOnPaper()
         {
-            var pencil = new Pencil(100, 5);
-            var paper = new Paper();
+            SetupDesk(100, 5, true);
             var testString = "Hello I am a string too";
 
-            pencil.Write(paper, testString);
+            _pencil.Write(_paper, testString);
 
-            paper.Contents.ShouldBe(testString);
+            _paper.Contents.ShouldBe(testString);
         }
 
         [Fact]
         public void WhenPencilWritesOnPaperItAddsToExistingContents()
         {
-            var pencil = new Pencil(100, 5);
-            var paper = new Paper();
+            SetupDesk(100, 5, true);
             var firstString = "This is the start";
             var secondString = " and this is the end";
 
-            pencil.Write(paper, firstString);
-            pencil.Write(paper, secondString);
+            _pencil.Write(_paper, firstString);
+            _pencil.Write(_paper, secondString);
             
-            paper.Contents.ShouldBe("This is the start and this is the end");
+            _paper.Contents.ShouldBe("This is the start and this is the end");
         }
 
         [Fact]
         public void WhenPencilWritesThePointDegrades()
         {
-            var pencil = new Pencil(6, 5);
+            SetupDesk(6, 5, false);
             var testString = "Mouse Squad";
 
-            var result = pencil.Write(testString);
+            var result = _pencil.Write(testString);
 
             result.ShouldBe("Mouse      ");
         }
@@ -57,10 +68,10 @@ namespace PencilKata.Tests
         [Fact]
         public void WhenPencilWritesThePointDoesNotDegradeFromWhiteSpace()
         {
-            var pencil = new Pencil(9, 5);
+            SetupDesk(9, 5, false);
             var testString = "Mouse Squad";
 
-            var result = pencil.Write(testString);
+            var result = _pencil.Write(testString);
             
             result.ShouldBe("Mouse Sq   ");
         }
@@ -68,11 +79,11 @@ namespace PencilKata.Tests
         [Fact]
         public void WhenPencilWritesThePointDegradesTwiceAsFastOnUpperCaseLetters()
         {
-            var pencil = new Pencil(10, 5);
+            SetupDesk(10, 5, false);
             var testString = "This Will Not Finish";
             var expected = "This Will           ";
 
-            var result = pencil.Write(testString);
+            var result = _pencil.Write(testString);
             
             result.ShouldBe(expected);
         }
