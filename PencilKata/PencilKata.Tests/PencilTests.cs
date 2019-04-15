@@ -28,7 +28,19 @@ namespace PencilKata.Tests
 
             paper.Contents.ShouldBe(testString);
         }
-        
-        
+
+        [Fact]
+        public void WhenPencilWritesOnPaperItAddsToExistingContents()
+        {
+            var pencil = new Pencil();
+            var paper = new Paper();
+            var firstString = "This is the start";
+            var secondString = " and this is the end";
+
+            pencil.Write(paper, firstString);
+            pencil.Write(paper, secondString);
+            
+            paper.Contents.ShouldBe("This is the start and this is the end");
+        }
     }
 }

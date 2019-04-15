@@ -11,7 +11,7 @@ namespace PencilKata.Library
 
         public void Write(Paper paper, string input)
         {
-            paper.Contents = Write(input);
+            paper.Contents += Write(input);
         }
     }
 }
