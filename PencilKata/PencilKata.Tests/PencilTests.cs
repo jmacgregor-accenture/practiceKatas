@@ -28,5 +28,7 @@ namespace PencilKata.Tests
 
             paper.Contents.ShouldBe(testString);
         }
+        
+        
     }
 }
