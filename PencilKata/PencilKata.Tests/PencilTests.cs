@@ -46,7 +46,7 @@ namespace PencilKata.Tests
         [Fact]
         public void WhenPencilWritesThePointDegrades()
         {
-            var pencil = new Pencil(5);
+            var pencil = new Pencil(6);
             var testString = "Mouse Squad";
 
             var result = pencil.Write(testString);
@@ -57,12 +57,24 @@ namespace PencilKata.Tests
         [Fact]
         public void WhenPencilWritesThePointDoesNotDegradeFromWhiteSpace()
         {
-            var pencil = new Pencil(7);
+            var pencil = new Pencil(9);
             var testString = "Mouse Squad";
 
             var result = pencil.Write(testString);
             
             result.ShouldBe("Mouse Sq   ");
+        }
+
+        [Fact]
+        public void WhenPencilWritesThePointDegradesTwiceAsFastOnUpperCaseLetters()
+        {
+            var pencil = new Pencil(10);
+            var testString = "This Will Not Finish";
+            var expected = "This Will           ";
+
+            var result = pencil.Write(testString);
+            
+            result.ShouldBe(expected);
         }
     }
 }
