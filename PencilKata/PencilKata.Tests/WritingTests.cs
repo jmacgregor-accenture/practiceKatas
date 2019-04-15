@@ -4,20 +4,9 @@ using Shouldly;
 
 namespace PencilKata.Tests
 {
-    public class PencilTests
+    public class WritingTests : TestDesk
     {
-        private Pencil _pencil;
-        private Paper _paper;
-
-        private void SetupDesk(int pencilDurability, int pencilLength, bool addPaper)
-        {
-            _pencil = new Pencil(pencilDurability, pencilLength);
-
-            if (addPaper)
-            {
-                _paper = new Paper();
-            }
-        }
+        
         
         [Fact]
         public void WhenPencilWritesTextIsReturned()
