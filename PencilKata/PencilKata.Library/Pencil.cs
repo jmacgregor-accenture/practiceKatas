@@ -55,6 +55,7 @@ namespace PencilKata.Library
             if (_pointDurability < _maxDurabilty && _currentLength > 0)
             {
                 _pointDurability = _maxDurabilty;
+                _currentLength--;
             }
         }
     }
