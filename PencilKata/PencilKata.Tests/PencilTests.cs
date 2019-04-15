@@ -16,5 +16,17 @@ namespace PencilKata.Tests
             
             result.ShouldBe(testString);
         }
+
+        [Fact]
+        public void WhenPencilWritesOnPaperTextAppearsOnPaper()
+        {
+            var pencil = new Pencil();
+            var paper = new Paper();
+            var testString = "Hello I am a string too";
+
+            pencil.Write(paper, testString);
+
+            paper.Contents.ShouldBe(testString);
+        }
     }
 }

@@ -8,5 +8,10 @@ namespace PencilKata.Library
         {
             return input;
         }
+
+        public void Write(Paper paper, string input)
+        {
+            paper.Contents = input;
+        }
     }
 }
