@@ -2,7 +2,11 @@
 
 namespace PencilKata.Library
 {
-    public class Class1
+    public class Pencil
     {
+        public string Write(string input)
+        {
+            return input;
+        }
     }
 }
