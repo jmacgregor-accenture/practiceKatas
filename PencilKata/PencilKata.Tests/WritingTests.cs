@@ -24,10 +24,26 @@ namespace PencilKata.Tests
             var pencil = new Pencil();
             var paper = new Paper();
             var testString = "Turkey";
+            var expectedString = "Turkey";
 
             pencil.Write(paper, testString);
 
-            paper.Contents.ShouldBe(testString);
+            paper.Contents.ShouldBe(expectedString);
+        }
+
+        [Fact]
+        public void WhenWritingMultipleStringsToPaperAllStringsAreDisplayed()
+        {
+            var pencil = new Pencil();
+            var paper = new Paper();
+            var testString1 = "Turkey Sandwich";
+            var testString2 = " with Bacon";
+            var expectedString = "Turkey Sandwich with Bacon";
+
+            pencil.Write(paper, testString1);
+            pencil.Write(paper, testString2);
+            
+            paper.Contents.ShouldBe(expectedString);
         }
     }
 }
