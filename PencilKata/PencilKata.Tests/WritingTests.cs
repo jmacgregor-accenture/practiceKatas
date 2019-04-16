@@ -17,5 +17,17 @@ namespace PencilKata.Tests
             
             result.ShouldBe(testString);
         }
+
+        [Fact]
+        public void WhenWritingOnPaperInputStringShownOnPaper()
+        {
+            var pencil = new Pencil();
+            var paper = new Paper();
+            var testString = "Turkey";
+
+            pencil.Write(paper, testString);
+
+            paper.Contents.ShouldBe(testString);
+        }
     }
 }
