@@ -17,5 +17,17 @@ namespace PencilKata.Tests
 
             result.ShouldBe(expectedString);
         }
+
+        [Fact]
+        public void WhenWritingUpperCaseLettersDegradeTwiceAsMuchAsLowerCase()
+        {
+            SetupDesk(5);
+            var testString = "Ono Help";
+            var expectedString = "Ono H   ";
+
+            var result = _pencil.Write(testString);
+            
+            result.ShouldBe(expectedString);
+        }
     }
 }
