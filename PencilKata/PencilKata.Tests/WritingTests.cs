@@ -1,4 +1,5 @@
 using System;
+using System.IO.Compression;
 using PencilKata.Library;
 using Shouldly;
 using Xunit;
@@ -7,13 +8,22 @@ namespace PencilKata.Tests
 {
     public class WritingTests
     {
+        protected Pencil _pencil;
+        protected Paper _paper;
+
+        protected void SetupDesk()
+        {
+            _paper = new Paper();
+            _pencil = new Pencil();
+        }
+        
         [Fact]
         public void WhenWritingPencilReturnsInputString()
         {
-            var pencil = new Pencil();
+            SetupDesk();
             var testString = "Turkey Sammich";
 
-            var result = pencil.Write(testString);
+            var result = _pencil.Write(testString);
             
             result.ShouldBe(testString);
         }
@@ -21,29 +31,27 @@ namespace PencilKata.Tests
         [Fact]
         public void WhenWritingOnPaperInputStringShownOnPaper()
         {
-            var pencil = new Pencil();
-            var paper = new Paper();
+            SetupDesk();
             var testString = "Turkey";
             var expectedString = "Turkey";
 
-            pencil.Write(paper, testString);
+            _pencil.Write(_paper, testString);
 
-            paper.Contents.ShouldBe(expectedString);
+            _paper.Contents.ShouldBe(expectedString);
         }
 
         [Fact]
         public void WhenWritingMultipleStringsToPaperAllStringsAreDisplayed()
         {
-            var pencil = new Pencil();
-            var paper = new Paper();
+            SetupDesk();
             var testString1 = "Turkey Sandwich";
             var testString2 = " with Bacon";
             var expectedString = "Turkey Sandwich with Bacon";
 
-            pencil.Write(paper, testString1);
-            pencil.Write(paper, testString2);
+            _pencil.Write(_paper, testString1);
+            _pencil.Write(_paper, testString2);
             
-            paper.Contents.ShouldBe(expectedString);
+            _paper.Contents.ShouldBe(expectedString);
         }
     }
 }
