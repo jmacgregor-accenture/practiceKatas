@@ -8,7 +8,7 @@ namespace PencilKata.Tests
         [Fact]
         public void WhenWritingPastEndOfDurabilityOnlyWhiteSpaceReturned()
         {
-            SetupDesk(5);
+            SetupDesk(5, 0);
 
             var testString = "ono help";
             var expectedString = "ono he  ";
@@ -21,7 +21,7 @@ namespace PencilKata.Tests
         [Fact]
         public void WhenWritingUpperCaseLettersDegradeTwiceAsMuchAsLowerCase()
         {
-            SetupDesk(5);
+            SetupDesk(5, 0);
             var testString = "Ono Help";
             var expectedString = "Ono H   ";
 

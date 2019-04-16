@@ -11,16 +11,16 @@ namespace PencilKata.Tests
         protected Pencil _pencil;
         protected Paper _paper;
 
-        protected void SetupDesk(int pencilDurability)
+        protected void SetupDesk(int pencilDurability, int pencilLength)
         {
             _paper = new Paper();
-            _pencil = new Pencil(pencilDurability);
+            _pencil = new Pencil(pencilDurability, pencilLength);
         }
         
         [Fact]
         public void WhenWritingPencilReturnsInputString()
         {
-            SetupDesk(25);
+            SetupDesk(25,0);
             var testString = "Turkey Sammich";
 
             var result = _pencil.Write(testString);
@@ -31,7 +31,7 @@ namespace PencilKata.Tests
         [Fact]
         public void WhenWritingOnPaperInputStringShownOnPaper()
         {
-            SetupDesk(25);
+            SetupDesk(25, 0);
             var testString = "Turkey";
             var expectedString = "Turkey";
 
@@ -43,7 +43,7 @@ namespace PencilKata.Tests
         [Fact]
         public void WhenWritingMultipleStringsToPaperAllStringsAreDisplayed()
         {
-            SetupDesk(50);
+            SetupDesk(50, 0);
             var testString1 = "Turkey Sandwich";
             var testString2 = " with Bacon";
             var expectedString = "Turkey Sandwich with Bacon";

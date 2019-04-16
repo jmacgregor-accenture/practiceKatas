@@ -6,11 +6,13 @@ namespace PencilKata.Library
     {
         private int _durability;
         private int _maxDurability;
+        private int _currentLength;
         
-        public Pencil(int pencilDurability)
+        public Pencil(int pencilDurability, int pencilLength)
         {
             _durability = pencilDurability;
             _maxDurability = _durability;
+            _currentLength = pencilLength;
         }
 
         public string Write(string stringToWrite)
@@ -49,9 +51,10 @@ namespace PencilKata.Library
 
         public void Sharpen()
         {
-            if (_durability < _maxDurability)
+            if (_durability < _maxDurability && _currentLength > 0)
             {
                 _durability = _maxDurability;
+                _currentLength--;
             }
         }
     }
