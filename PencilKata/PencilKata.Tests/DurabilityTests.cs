@@ -11,7 +11,7 @@ namespace PencilKata.Tests
             SetupDesk(5);
 
             var testString = "ono help";
-            var expectedString = "ono h   ";
+            var expectedString = "ono he  ";
 
             var result = _pencil.Write(testString);
 

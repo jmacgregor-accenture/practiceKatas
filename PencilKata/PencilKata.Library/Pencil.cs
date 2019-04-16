@@ -20,7 +20,12 @@ namespace PencilKata.Library
                 if (_durability > 0)
                 {
                     returnString += character;
-                    _durability--;
+
+                    if (!char.IsWhiteSpace(character))
+                    {
+                        _durability--;
+                    }
+                    
                 }
                 else
                 {
