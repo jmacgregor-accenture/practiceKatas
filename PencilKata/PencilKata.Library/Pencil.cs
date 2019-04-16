@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace PencilKata.Library
 {
@@ -57,6 +59,19 @@ namespace PencilKata.Library
                 _pointDurability = _maxDurabilty;
                 _currentLength--;
             }
+        }
+
+        public void Erase(Paper paper, string eraseString)
+        {
+            var paperContents = paper.Contents.ToCharArray();    
+            var startIndexOfErase = paper.Contents.LastIndexOf(eraseString, StringComparison.Ordinal);
+
+            for (var i = startIndexOfErase; i < paperContents.Length; i++)
+            {
+                paperContents[i] = ' ';
+            }
+
+            paper.Contents = new string(paperContents);
         }
     }
 }

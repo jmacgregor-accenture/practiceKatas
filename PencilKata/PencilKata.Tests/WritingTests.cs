@@ -6,8 +6,6 @@ namespace PencilKata.Tests
 {
     public class WritingTests : TestDesk
     {
-        
-        
         [Fact]
         public void WhenPencilWritesTextIsReturned()
         {
