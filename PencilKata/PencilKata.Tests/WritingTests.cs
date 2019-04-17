@@ -9,7 +9,7 @@ namespace PencilKata.Tests
         [Fact]
         public void WhenWritingInputStringIsReturned()
         {
-            var pencil = new Pencil();
+            var pencil = new Pencil(25);
             var testString = "test";
             var expectedString = "test";
 
@@ -21,7 +21,7 @@ namespace PencilKata.Tests
         [Fact]
         public void WhenWritingToSurfaceContentsIsUpdated()
         {
-            var pencil = new Pencil();
+            var pencil = new Pencil(25);
             var paper = new Paper();
             var testString = "test";
             var expectedString = "test";
@@ -34,7 +34,7 @@ namespace PencilKata.Tests
         [Fact]
         public void WhenWritingToSurfaceNewContentIsAddedToExistingContent()
         {
-            var pencil = new Pencil();
+            var pencil = new Pencil(25);
             var paper = new Paper();
             var firstString = "hello";
             var secondString = " there";
