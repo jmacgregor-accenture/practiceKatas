@@ -43,5 +43,18 @@ namespace PencilKata.Tests
             
             paper.Contents.ShouldBe(expectedString);
         }
+
+        [Fact]
+        public void WhenWritingSpacesPointDoesNotDull()
+        {
+            var pencil = new Pencil(4);
+            var paper = new Paper();
+            var testString = "    woot";
+            var expectedString = "    woot";
+            
+            pencil.WriteTo(paper, testString);
+            
+            paper.Contents.ShouldBe(expectedString);
+        }
     }
 }
