@@ -17,5 +17,18 @@ namespace PencilKata.Tests
             
             result.ShouldBe(expectedString);
         }
+
+        [Fact]
+        public void WhenWritingToSurfacePastDurabilityZeroOnlyWhiteSpaceIsOnSurface()
+        {
+            var pencil = new Pencil(4);
+            var paper = new Paper();
+            var testString = "hello";
+            var expectedString = "hell";
+
+            pencil.WriteTo(paper, testString);
+            
+            paper.Contents.ShouldBe(expectedString);
+        }
     }
 }

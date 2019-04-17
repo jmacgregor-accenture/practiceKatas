@@ -29,7 +29,7 @@ namespace PencilKata.Library
 
         public void WriteTo(IWritable surface, string stringToWrite)
         {
-            surface.SetContents(stringToWrite);
+            surface.SetContents(Write(stringToWrite));
         }
     }
 }
