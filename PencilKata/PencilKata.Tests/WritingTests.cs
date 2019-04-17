@@ -17,5 +17,20 @@ namespace PencilKata.Tests
 
             result.ShouldBe(expectedString);
         }
+
+        [Fact]
+        public void WhenWritingToSurfaceContentsIsUpdated()
+        {
+            var pencil = new Pencil();
+            var paper = new Paper();
+            var testString = "test";
+            var expectedString = "test";
+            
+            pencil.WriteTo(paper, testString);
+
+            paper.Contents.ShouldBe(expectedString);
+        }
+        
+        
     }
 }
