@@ -31,7 +31,7 @@ namespace PencilKata.Tests
             paper.Contents.ShouldBe(expectedString);
         }
 
-        [Fact(Skip = "Need to correct previous tests")]
+        [Fact]
         public void WhenWritingUpperCaseLettersSharpnessIsLostTwiceAsFast()
         {
             var pencil = new Pencil(4);

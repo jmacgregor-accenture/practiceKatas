@@ -25,6 +25,11 @@ namespace PencilKata.Library
                     {
                         _pointSharpness--;
                     }
+
+                    if (char.IsUpper(character))
+                    {
+                        _pointSharpness--;
+                    }
                     
                 }
                 else
