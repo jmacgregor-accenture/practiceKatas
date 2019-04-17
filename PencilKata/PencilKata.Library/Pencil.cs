@@ -6,7 +6,7 @@ namespace PencilKata.Library
     {
         public string Write(string stringToWrite)
         {
-            return "test";
+            return stringToWrite;
         }
     }
 }
