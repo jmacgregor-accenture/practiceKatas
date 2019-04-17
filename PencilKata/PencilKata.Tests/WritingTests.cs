@@ -30,7 +30,20 @@ namespace PencilKata.Tests
 
             paper.Contents.ShouldBe(expectedString);
         }
-        
-        
+
+        [Fact]
+        public void WhenWritingToSurfaceNewContentIsAddedToExistingContent()
+        {
+            var pencil = new Pencil();
+            var paper = new Paper();
+            var firstString = "hello";
+            var secondString = " there";
+            var expectedString = "hello there";
+            
+            pencil.WriteTo(paper, firstString);
+            pencil.WriteTo(paper, secondString);
+            
+            paper.Contents.ShouldBe(expectedString);
+        }
     }
 }

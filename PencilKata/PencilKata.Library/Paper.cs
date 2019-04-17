@@ -5,7 +5,7 @@ namespace PencilKata.Library
         public string Contents { get; private set; }
         public void SetContents(string stringToAdd)
         {
-            Contents = stringToAdd;
+            Contents += stringToAdd;
         }
     }
 }
