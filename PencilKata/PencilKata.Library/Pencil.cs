@@ -20,7 +20,16 @@ namespace PencilKata.Library
                 if (_pointSharpness > 0)
                 {
                     returnString += character;
-                    _pointSharpness--;
+
+                    if (!char.IsWhiteSpace(character))
+                    {
+                        _pointSharpness--;
+                    }
+                    
+                }
+                else
+                {
+                    returnString += ' ';
                 }
             }
             
@@ -29,7 +38,9 @@ namespace PencilKata.Library
 
         public void WriteTo(IWritable surface, string stringToWrite)
         {
-            surface.SetContents(Write(stringToWrite));
+            var writtenString = Write(stringToWrite);
+            
+            surface.SetContents(writtenString);
         }
     }
 }
