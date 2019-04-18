@@ -8,5 +8,10 @@ namespace PencilKata.Library
         {
             return stringToWrite;
         }
+
+        public void WriteTo(IWritable surface, string stringToWrite)
+        {
+            surface.Write(stringToWrite);
+        }
     }
 }
