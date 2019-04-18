@@ -23,7 +23,7 @@ namespace PencilKata.Tests
             result.ShouldBe(expectedString);
         }
 
-        [Fact(Skip = "Need to test Paper")]
+        [Fact]
         public void WhenWritingOnPaperWrittenStringAppearsOnPaper()
         {
             var pencil = new Pencil();
