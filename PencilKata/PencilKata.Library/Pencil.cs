@@ -23,6 +23,11 @@ namespace PencilKata.Library
                     {
                         _durability--;
                     }
+
+                    if (char.IsUpper(character))
+                    {
+                        _durability--;
+                    }
                     
                 }
                 else

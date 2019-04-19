@@ -7,11 +7,12 @@ namespace PencilKata.Tests
 {
     public class PencilShould
     {
+        private IWritable paper = Substitute.For<IWritable>();
+        
         [Fact]
         public void WriteToPaper()
         {
             var pencil = new Pencil(25);
-            var paper = Substitute.For<IWritable>();
             var testString = "We writing nao";
 
             pencil.Write(paper, testString);
@@ -23,7 +24,6 @@ namespace PencilKata.Tests
         public void ReturnSpacesWhenWritingBeyondDurability()
         {
             var pencil = new Pencil(4);
-            var paper = Substitute.For<IWritable>();
             
             pencil.Write(paper,"running");
             
@@ -34,11 +34,20 @@ namespace PencilKata.Tests
         public void NotDegradeWhenWritingWhiteSpace()
         {
             var pencil = new Pencil(6);
-            var paper = Substitute.For<IWritable>();
 
             pencil.Write(paper,"boo boo");
             
             paper.Received(1).Write("boo boo");
+        }
+
+        [Fact]
+        public void DegradeTwiceAsFastWritingUpperCaseLetters()
+        {
+            var pencil = new Pencil(4);
+            
+            pencil.Write(paper, "Boot");
+            
+            paper.Received(1).Write("Boo ");
         }
     }
 }
