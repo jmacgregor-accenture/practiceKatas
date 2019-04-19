@@ -6,15 +6,15 @@ namespace PencilKata.Tests
 {
     public class PaperShould
     {
-        [Fact]
-        public void WriteToPaper()
+        [Theory]
+        [InlineData("I am a string", "I am a string")]
+        public void WriteToPaper(string stringToWrite, string expectedString)
         {
             IWritable paper = new Paper();
-            var testString = "I am a string";
 
-            paper.Write(testString);
+            paper.Write(stringToWrite);
 
-            paper.Read().ShouldBe(testString);
+            paper.Read().ShouldBe(expectedString);
         }
     }
 }
