@@ -6,7 +6,7 @@ namespace PencilKata.Library
 
         public void Write(string inputString)
         {
-            _contentsBuffer = inputString;
+            _contentsBuffer += inputString;
         }
 
         public string Read()
