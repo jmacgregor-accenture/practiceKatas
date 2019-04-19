@@ -8,6 +8,7 @@ namespace PencilKata.Tests
     {
         [Theory]
         [InlineData("I am a string", "I am a string")]
+        [InlineData("I am also a string", "I am also a string")]
         public void WriteToPaper(string stringToWrite, string expectedString)
         {
             IWritable paper = new Paper();
