@@ -18,7 +18,12 @@ namespace PencilKata.Library
                 if (_durability > 0)
                 {
                     writtenString += character;
-                    _durability--;
+
+                    if (!char.IsWhiteSpace(character))
+                    {
+                        _durability--;
+                    }
+                    
                 }
                 else
                 {

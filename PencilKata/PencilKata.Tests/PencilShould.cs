@@ -29,5 +29,16 @@ namespace PencilKata.Tests
             
             paper.Received(1).Write("runn   ");
         }
+
+        [Fact]
+        public void NotDegradeWhenWritingWhiteSpace()
+        {
+            var pencil = new Pencil(6);
+            var paper = Substitute.For<IWritable>();
+
+            pencil.Write(paper,"boo boo");
+            
+            paper.Received(1).Write("boo boo");
+        }
     }
 }
