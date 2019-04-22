@@ -7,15 +7,16 @@ namespace PencilKata.Tests
 {
     public class PaperShould
     {
-        [Fact]
-        public void DisplaySingleString()
+        [Theory]
+        [InlineData("testing", "testing")]
+        [InlineData("banana", "banana")]
+        public void DisplaySingleString(string testString, string expected)
         {
             var paper = new Paper();
-            var testString = "testing";
 
             paper.Write(testString);
 
-            paper.Read().ShouldBe(testString);
+            paper.Read().ShouldBe(expected);
         }
     }
 }
