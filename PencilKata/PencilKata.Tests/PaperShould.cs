@@ -18,5 +18,18 @@ namespace PencilKata.Tests
 
             paper.Read().ShouldBe(expected);
         }
+
+        [Fact]
+        public void DisplayMultipleStrings()
+        {
+            var paper = new Paper();
+            var firstString = "Hello";
+            var secondString = " there!";
+            
+            paper.Write(firstString);
+            paper.Write(secondString);
+            
+            paper.Read().ShouldBe(firstString + secondString);
+        }
     }
 }
