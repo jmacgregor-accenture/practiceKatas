@@ -2,7 +2,7 @@
 
 namespace PencilKata.Library
 {
-    public class Paper
+    public class Paper : IWritable
     {
         private string _contents;
 
