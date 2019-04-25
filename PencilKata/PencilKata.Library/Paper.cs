@@ -4,11 +4,27 @@ namespace PencilKata.Library
 {
     public class Paper
     {
-        public void Write(Pencil pencil, string input)
+        private int _lastIndexWritten;
+
+        public Paper(int lengthOfWriting)
         {
-            
+            Writing = new string(' ', lengthOfWriting);
         }
 
-        public string Writing { get; set; } = "Hello World";
+        public void Write(Pencil pencil, string input)
+        {
+            var currentWriting = Writing.ToCharArray();
+
+            for (var i = 0; i < input.Length; i++)
+            {
+                currentWriting[_lastIndexWritten + i] = input[i];
+            }
+
+            _lastIndexWritten += input.Length;
+
+            Writing = new string(currentWriting);
+        }
+
+        public string Writing { get; set; }
     }
 }
