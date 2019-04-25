@@ -17,6 +17,7 @@ namespace PencilKata.Library
 
             for (var i = 0; i < input.Length; i++)
             {
+                pencil.Write(input[i]);
                 currentWriting[_lastIndexWritten + i] = input[i];
             }
 
