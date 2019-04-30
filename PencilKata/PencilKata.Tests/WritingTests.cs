@@ -19,7 +19,7 @@ namespace PencilKata.Tests
             paper.Writing.ShouldBe(inputString);
         }
 
-        [Fact(Skip = "Refactoring")]
+        [Fact]
         public void WhenWritingToPaperWithDullPencilOnlyWhitespaceIsReturned()
         {
             var pencil = new Pencil(5);
