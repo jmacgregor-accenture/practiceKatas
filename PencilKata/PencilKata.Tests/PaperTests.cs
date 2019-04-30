@@ -7,7 +7,7 @@ namespace PencilKata.Tests
 {
     public class PaperTests
     {
-        Pencil pencil = new Pencil(5);
+        Pencil pencil = new Pencil(15);
         
 
         [Fact]
@@ -53,6 +53,15 @@ namespace PencilKata.Tests
             Assert.Equal("Hello World!", paper.Writing);
         }
 
-        
+        [Fact]
+        public void TextDoesNotWriteToPaperWhenPencilIsDull()
+        {
+            var paper = new Paper(4);
+            pencil.PointDurability = 0;
+            
+            paper.Write(pencil,"Doesn't Matter" );
+            
+            paper.Writing.ShouldBe("    ");
+        }
     }
 }
