@@ -7,7 +7,7 @@ namespace PencilKata.Tests
 {
     public class PaperTests
     {
-        Pencil pencil = new Pencil(15);
+        Pencil pencil = new Pencil(15, 0);
         
 
         [Fact]

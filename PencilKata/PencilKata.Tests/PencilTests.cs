@@ -9,9 +9,9 @@ namespace PencilKata.Tests
         private const int fiveDurability = 5;
         private Pencil pencil;
 
-        private void SetupPencil(int durability)
+        private void SetupPencil(int durability, int length = 0)
         {
-            pencil = new Pencil(durability);
+            pencil = new Pencil(durability, length);
         }
         
         [Fact]
@@ -64,12 +64,23 @@ namespace PencilKata.Tests
         [Fact]
         public void PencilDurabilityRestoresToInitialWhenSharpened()
         {
-            SetupPencil(1);
+            SetupPencil(1, 1);
             pencil.Write('n');
 
             pencil.Sharpen();
             
             pencil.PointDurability.ShouldBe(1);
+        }
+
+        [Fact]
+        public void PencilWithNoLengthWillNotSharpen()
+        {
+            SetupPencil(1);
+            pencil.Write('n');
+            
+            pencil.Sharpen();
+            
+            pencil.PointDurability.ShouldBe(0);
         }
     }
 }

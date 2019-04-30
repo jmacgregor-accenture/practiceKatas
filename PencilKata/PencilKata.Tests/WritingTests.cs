@@ -6,10 +6,17 @@ namespace PencilKata.Tests
 {
     public class WritingTests
     {
+        private Pencil pencil;
+
+        private void SetupPencil(int durability, int length = 0)
+        {
+            pencil = new Pencil(durability, length);
+        }
+        
         [Fact]
         public void WhenWritingToPaperWithSharpPencilWritingAppearsAndPointDegrades()
         {
-            var pencil = new Pencil(50);
+            SetupPencil(50);
             var paper = new Paper(14);
             var inputString = "Well Now Hello";
             
@@ -22,7 +29,7 @@ namespace PencilKata.Tests
         [Fact]
         public void WhenWritingToPaperWithDullPencilOnlyWhitespaceIsReturned()
         {
-            var pencil = new Pencil(5);
+            SetupPencil(5);
             var paper = new Paper(14);
             var inputString = "Well Now Hello";
             
@@ -35,7 +42,7 @@ namespace PencilKata.Tests
         [Fact]
         public void WhenWritingToPaperWithPencilSharpeningBetweenStringsAllowsAllToAppend()
         {
-            var pencil = new Pencil(5);
+            SetupPencil(5,1);
             var paper = new Paper(9);
             var stringOne = "Well ";
             var stringTwo = "Done";

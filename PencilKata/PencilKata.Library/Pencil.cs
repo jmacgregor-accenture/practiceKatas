@@ -2,13 +2,16 @@ namespace PencilKata.Library
 {
     public class Pencil
     {
+        
         private int _initialDurability;
         public int PointDurability { get; set; }
+        public int Length { get; set; }
         
-        public Pencil(int initialDurability)
+        public Pencil(int initialDurability, int initialLength)
         {
             _initialDurability = initialDurability;
             PointDurability = _initialDurability;
+            Length = initialLength;
         }
         
         public void Write(char character)
@@ -30,7 +33,11 @@ namespace PencilKata.Library
 
         public void Sharpen()
         {
-            PointDurability = _initialDurability;
+            if (Length > 0)
+            {
+                PointDurability = _initialDurability;
+            }
+            
         }
     }
 }
