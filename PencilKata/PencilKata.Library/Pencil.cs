@@ -3,7 +3,7 @@ namespace PencilKata.Library
     public class Pencil
     {
         
-        private int _initialDurability;
+        private readonly int _initialDurability;
         public int PointDurability { get; set; }
         public int Length { get; set; }
         
@@ -16,10 +16,8 @@ namespace PencilKata.Library
         
         public void Write(char character)
         {
-            if (char.IsWhiteSpace(character) || PointDurability < 1)
-            {
-                return;
-            }
+            if (char.IsWhiteSpace(character) || PointDurability < 1) return;
+            
             
             if (char.IsUpper(character))
             {
@@ -33,12 +31,11 @@ namespace PencilKata.Library
 
         public void Sharpen()
         {
-            if (Length > 0)
-            {
-                PointDurability = _initialDurability;
-                Length--;
-            }
+            if (Length <= 0) return;
             
+            PointDurability = _initialDurability;
+            Length--;
+
         }
     }
 }
