@@ -60,5 +60,16 @@ namespace PencilKata.Tests
             
             pencil.PointDurability.ShouldBe(0);
         }
+
+        [Fact]
+        public void PencilDurabilityRestoresToInitialWhenSharpened()
+        {
+            SetupPencil(1);
+            pencil.Write('n');
+
+            pencil.Sharpen();
+            
+            pencil.PointDurability.ShouldBe(1);
+        }
     }
 }
