@@ -6,11 +6,18 @@ namespace PencilKata.Tests
 {
     public class PencilTests
     {
+        private const int fiveDurability = 5;
+        private Pencil pencil;
+
+        private void SetupPencil(int durability)
+        {
+            pencil = new Pencil(durability);
+        }
+        
         [Fact]
         public void WhenPencilWritesALowerCaseCharacterThenDurabilityDegradesByOne()
         {
-            int initialDurability = 5;
-            var pencil = new Pencil(initialDurability);
+            SetupPencil(fiveDurability);
 
             pencil.Write('w');
 
@@ -20,8 +27,7 @@ namespace PencilKata.Tests
         [Fact]
         public void WhenPencilWritesAnUpperCaseCharacterThenDurabilityDegradesByTwo()
         {
-            int initialDurability = 5;
-            var pencil = new Pencil(initialDurability);
+            SetupPencil(fiveDurability);
 
             pencil.Write('U');
 
@@ -34,8 +40,7 @@ namespace PencilKata.Tests
         [InlineData('\n')]
         public void WhenPencilWritesWhiteSpaceCharacterDurabilityDoesNotChange(char testInput)
         {
-            int initialDurability = 5;
-            var pencil = new Pencil(initialDurability);
+            SetupPencil(fiveDurability);
             
             pencil.Write(testInput);
             
@@ -45,8 +50,7 @@ namespace PencilKata.Tests
         [Fact]
         public void PencilDoesNotDegradeBelowZero()
         {
-            var initialDurability = 5;
-            var pencil = new Pencil(initialDurability);
+            SetupPencil(fiveDurability);
             var input = "Word Word";
 
             foreach (var letter in input)
