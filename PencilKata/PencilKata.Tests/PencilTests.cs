@@ -82,5 +82,17 @@ namespace PencilKata.Tests
             
             pencil.PointDurability.ShouldBe(0);
         }
+
+        [Fact]
+        public void PencilWithLengthReducesByOneWhenSharpened()
+        {
+           var startingLength = 3;
+           SetupPencil(1, startingLength);
+           pencil.Write('n');
+           
+           pencil.Sharpen();
+           
+           pencil.Length.ShouldBe(startingLength - 1);
+        }
     }
 }

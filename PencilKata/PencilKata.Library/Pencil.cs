@@ -36,6 +36,7 @@ namespace PencilKata.Library
             if (Length > 0)
             {
                 PointDurability = _initialDurability;
+                Length--;
             }
             
         }
