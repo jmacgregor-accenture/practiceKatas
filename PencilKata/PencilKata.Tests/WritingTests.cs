@@ -18,5 +18,18 @@ namespace PencilKata.Tests
             pencil.PointDurability.ShouldBe(35);
             paper.Writing.ShouldBe(inputString);
         }
+
+        [Fact(Skip = "refactoring")]
+        public void WhenWritingToPaperWithDullPencilOnlyWhitespaceIsReturned()
+        {
+            var pencil = new Pencil(5);
+            var paper = new Paper(14);
+            var inputString = "Well Now Hello";
+            
+            paper.Write(pencil, inputString);
+            
+            pencil.PointDurability.ShouldBe(0);
+            paper.Writing.ShouldBe("Well          ");
+        }
     }
 }

@@ -11,7 +11,7 @@ namespace PencilKata.Library
         
         public void Write(char character)
         {
-            if (char.IsWhiteSpace(character))
+            if (char.IsWhiteSpace(character) || PointDurability < 1)
             {
                 return;
             }

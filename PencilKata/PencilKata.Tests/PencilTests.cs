@@ -41,5 +41,20 @@ namespace PencilKata.Tests
             
             pencil.PointDurability.ShouldBe(5);
         }
+
+        [Fact]
+        public void PencilDoesNotDegradeBelowZero()
+        {
+            var initialDurability = 5;
+            var pencil = new Pencil(initialDurability);
+            var input = "Word Word";
+
+            foreach (var letter in input)
+            {
+                pencil.Write(letter);
+            }
+            
+            pencil.PointDurability.ShouldBe(0);
+        }
     }
 }
