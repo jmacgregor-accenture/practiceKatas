@@ -31,5 +31,20 @@ namespace PencilKata.Tests
             pencil.PointDurability.ShouldBe(0);
             paper.Writing.ShouldBe("Well          ");
         }
+
+        [Fact]
+        public void WhenWritingToPaperWithPencilSharpeningBetweenStringsAllowsAllToAppend()
+        {
+            var pencil = new Pencil(5);
+            var paper = new Paper(9);
+            var stringOne = "Well ";
+            var stringTwo = "Done";
+            
+            paper.Write(pencil, stringOne);
+            pencil.Sharpen();
+            paper.Write(pencil, stringTwo);
+            
+            paper.Writing.ShouldBe(stringOne + stringTwo);
+        }
     }
 }
