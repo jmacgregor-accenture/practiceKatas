@@ -8,6 +8,8 @@ namespace PencilKata.Library
 
         public int LastErasedSpot { get; set; }
 
+        private char[] _currentWriting;
+
         public Paper(int lengthOfWriting)
         {
             Writing = new string(' ', lengthOfWriting);
@@ -15,13 +17,13 @@ namespace PencilKata.Library
 
         public void Write(IFiniteWritingTool pencil, string input)
         {
-            var currentWriting = Writing.ToCharArray();
+            _currentWriting = Writing.ToCharArray();
 
-            LoopThroughInput(pencil, input, currentWriting);
+            LoopThroughInput(pencil, input);
 
             FirstOpenSpace += input.Length;
 
-            Writing = new string(currentWriting);
+            Writing = new string(_currentWriting);
         }
 
         
@@ -49,14 +51,14 @@ namespace PencilKata.Library
             Writing = new string(currentWriting);
         }
         
-        private void LoopThroughInput(IFiniteWritingTool tool, string input, char[] currentWriting)
+        private void LoopThroughInput(IFiniteWritingTool tool, string input)
         {
             for (var i = 0; i < input.Length; i++)
             {
                 if (tool.Durability <= 0) break;
 
                 tool.Use(input[i]);
-                currentWriting[FirstOpenSpace + i] = input[i];
+                _currentWriting[FirstOpenSpace + i] = input[i];
             }
         }
 
@@ -69,22 +71,22 @@ namespace PencilKata.Library
                 if (pencil.Durability <= 0) break;
                 
                 pencil.Use(replaceWith[i]);
-                InsertOrReplace(replaceWith, currentWriting, i);
+                InsertOrReplace(replaceWith, currentWriting, i, LastErasedSpot);
             }
             
             Writing = new string(currentWriting);
         }
 
-        private void InsertOrReplace(string replaceWith, char[] currentWriting, int indexOfInput)
+        private void InsertOrReplace(string replaceWith, char[] currentWriting, int indexOfInput, int startPoint)
         {
             var replacementChar = '@';
 
-            if (char.IsWhiteSpace(currentWriting[LastErasedSpot + indexOfInput]))
+            if (char.IsWhiteSpace(currentWriting[startPoint + indexOfInput]))
             {
                 replacementChar = replaceWith[indexOfInput];
             }
 
-            currentWriting[LastErasedSpot + indexOfInput] = replacementChar;
+            currentWriting[startPoint + indexOfInput] = replacementChar;
         }
     }
 }
