@@ -1,6 +1,6 @@
 namespace PencilKata.Library
 {
-    public class Eraser
+    public class Eraser : IFiniteWritingTool
     {
         public int Durability { get; set; }
         
@@ -9,7 +9,7 @@ namespace PencilKata.Library
             Durability = durability;
         }
 
-        public void Erase(char characterToErase)
+        public void Use(char characterToErase)
         {
             if (char.IsWhiteSpace(characterToErase)) return;
             

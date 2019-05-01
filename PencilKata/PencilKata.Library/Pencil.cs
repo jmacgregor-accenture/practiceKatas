@@ -1,31 +1,31 @@
 namespace PencilKata.Library
 {
-    public class Pencil
+    public class Pencil : IFiniteWritingTool
     {
         
         private readonly int _initialDurability;
-        public int PointDurability { get; set; }
+        public int Durability { get; set; }
         public int Length { get; set; }
         
         public Pencil(int initialDurability, int initialLength)
         {
             _initialDurability = initialDurability;
-            PointDurability = _initialDurability;
+            Durability = _initialDurability;
             Length = initialLength;
         }
         
-        public void Write(char character)
+        public void Use(char character)
         {
-            if (char.IsWhiteSpace(character) || PointDurability < 1) return;
+            if (char.IsWhiteSpace(character) || Durability < 1) return;
             
             
             if (char.IsUpper(character))
             {
-                PointDurability -= 2;
+                Durability -= 2;
             }
             else
             {
-                PointDurability -= 1;
+                Durability -= 1;
             }
         }
 
@@ -33,7 +33,7 @@ namespace PencilKata.Library
         {
             if (Length <= 0) return;
             
-            PointDurability = _initialDurability;
+            Durability = _initialDurability;
             Length--;
 
         }

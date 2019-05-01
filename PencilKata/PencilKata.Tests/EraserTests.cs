@@ -11,7 +11,7 @@ namespace PencilKata.Tests
         {
             var eraser = new Eraser(5);
 
-            eraser.Erase('d');
+            eraser.Use('d');
 
             eraser.Durability.ShouldBe(4);
         }
@@ -24,7 +24,7 @@ namespace PencilKata.Tests
         {
             var eraser = new Eraser(5);
             
-            eraser.Erase(testChar);
+            eraser.Use(testChar);
             
             eraser.Durability.ShouldBe(expectedDurability);
         }

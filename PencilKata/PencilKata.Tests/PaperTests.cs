@@ -58,7 +58,7 @@ namespace PencilKata.Tests
         public void TextDoesNotWriteToPaperWhenPencilIsDull()
         {
             var paper = new Paper(4);
-            pencil.PointDurability = 0;
+            pencil.Durability = 0;
             
             paper.Write(pencil,"Doesn't Matter");
             

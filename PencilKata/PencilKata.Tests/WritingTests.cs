@@ -22,7 +22,7 @@ namespace PencilKata.Tests
             
             paper.Write(pencil, inputString);
             
-            pencil.PointDurability.ShouldBe(35);
+            pencil.Durability.ShouldBe(35);
             paper.Writing.ShouldBe(inputString);
         }
 
@@ -35,7 +35,7 @@ namespace PencilKata.Tests
             
             paper.Write(pencil, inputString);
             
-            pencil.PointDurability.ShouldBe(0);
+            pencil.Durability.ShouldBe(0);
             paper.Writing.ShouldBe("Well          ");
         }
 

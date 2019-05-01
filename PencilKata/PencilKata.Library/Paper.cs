@@ -13,15 +13,15 @@ namespace PencilKata.Library
             Writing = new string(' ', lengthOfWriting);
         }
 
-        public void Write(Pencil pencil, string input)
+        public void Write(IFiniteWritingTool pencil, string input)
         {
             var currentWriting = Writing.ToCharArray();
 
             for (var i = 0; i < input.Length; i++)
             {
-                if (pencil.PointDurability <= 0) break;
+                if (pencil.Durability <= 0) break;
                 
-                pencil.Write(input[i]);
+                pencil.Use(input[i]);
                 currentWriting[FirstOpenSpace + i] = input[i];
             }
 
@@ -42,7 +42,7 @@ namespace PencilKata.Library
             {
                 if (eraser.Durability < 1) break;
                 
-                eraser.Erase(currentWriting[indexToStartReplace]);
+                eraser.Use(currentWriting[indexToStartReplace]);
                 currentWriting[indexToStartReplace] = ' ';
                 lastErasedSpot--;
                 indexToStartReplace--;
@@ -59,9 +59,9 @@ namespace PencilKata.Library
 
             for (var i = 0; i < replaceWith.Length; i++)
             {
-                if (pencil.PointDurability <= 0) break;
+                if (pencil.Durability <= 0) break;
                 
-                pencil.Write(replaceWith[i]);
+                pencil.Use(replaceWith[i]);
                 var replacementChar = '@';
 
                 if (char.IsWhiteSpace(currentWriting[LastErasedSpot + i]))

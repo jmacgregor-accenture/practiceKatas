@@ -19,9 +19,9 @@ namespace PencilKata.Tests
         {
             SetupPencil(fiveDurability);
 
-            pencil.Write('w');
+            pencil.Use('w');
 
-            pencil.PointDurability.ShouldBe(4);
+            pencil.Durability.ShouldBe(4);
         }
         
         [Fact]
@@ -29,9 +29,9 @@ namespace PencilKata.Tests
         {
             SetupPencil(fiveDurability);
 
-            pencil.Write('U');
+            pencil.Use('U');
 
-            pencil.PointDurability.ShouldBe(3);
+            pencil.Durability.ShouldBe(3);
         }
 
         [Theory]
@@ -42,9 +42,9 @@ namespace PencilKata.Tests
         {
             SetupPencil(fiveDurability);
             
-            pencil.Write(testInput);
+            pencil.Use(testInput);
             
-            pencil.PointDurability.ShouldBe(5);
+            pencil.Durability.ShouldBe(5);
         }
 
         [Fact]
@@ -55,32 +55,32 @@ namespace PencilKata.Tests
 
             foreach (var letter in input)
             {
-                pencil.Write(letter);
+                pencil.Use(letter);
             }
             
-            pencil.PointDurability.ShouldBe(0);
+            pencil.Durability.ShouldBe(0);
         }
 
         [Fact]
         public void PencilDurabilityRestoresToInitialWhenSharpened()
         {
             SetupPencil(1, 1);
-            pencil.Write('n');
+            pencil.Use('n');
 
             pencil.Sharpen();
             
-            pencil.PointDurability.ShouldBe(1);
+            pencil.Durability.ShouldBe(1);
         }
 
         [Fact]
         public void PencilWithNoLengthWillNotSharpen()
         {
             SetupPencil(1);
-            pencil.Write('n');
+            pencil.Use('n');
             
             pencil.Sharpen();
             
-            pencil.PointDurability.ShouldBe(0);
+            pencil.Durability.ShouldBe(0);
         }
 
         [Fact]
@@ -88,7 +88,7 @@ namespace PencilKata.Tests
         {
            var startingLength = 3;
            SetupPencil(1, startingLength);
-           pencil.Write('n');
+           pencil.Use('n');
            
            pencil.Sharpen();
            
