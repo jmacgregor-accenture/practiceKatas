@@ -31,15 +31,18 @@ namespace PencilKata.Library
             Writing = new string(currentWriting);
         }
 
-        public void Erase(string inputString)
+        public void Erase(Eraser eraser, string inputString)
         {
             var currentWriting = Writing.ToCharArray();
-            var indexToStartReplace = Writing.LastIndexOf(inputString);
+            var indexToStartReplace = Writing.LastIndexOf(inputString) + inputString.Length;
 
-            for (var i = 0; i < inputString.Length; i++)
+            for (var i = inputString.Length; i > 0; i--)
             {
-                currentWriting[indexToStartReplace] = ' ';
-                indexToStartReplace++;
+                if (eraser.Durability < 1) break;
+                
+                eraser.Erase(currentWriting[indexToStartReplace - 1]);
+                currentWriting[indexToStartReplace - 1] = ' ';
+                indexToStartReplace--;
             }
             
             Writing = new string(currentWriting);

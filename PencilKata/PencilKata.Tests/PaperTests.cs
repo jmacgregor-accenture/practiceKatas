@@ -8,6 +8,7 @@ namespace PencilKata.Tests
     public class PaperTests
     {
         Pencil pencil = new Pencil(15, 0);
+        Eraser _eraser = new Eraser(25);
         
 
         [Fact]
@@ -71,7 +72,7 @@ namespace PencilKata.Tests
             var testString = "boom";
             paper.Writing = testString;
 
-            paper.Erase(testString);
+            paper.Erase(_eraser,testString);
             
             paper.Writing.ShouldBe("    ");
         }
@@ -83,7 +84,7 @@ namespace PencilKata.Tests
             var testString = "boom";
             paper.Writing = $"{testString} {testString}";
             
-            paper.Erase(testString);
+            paper.Erase(_eraser, testString);
             
             paper.Writing.ShouldBe($"{testString}     ");
         }
@@ -95,10 +96,23 @@ namespace PencilKata.Tests
             var testString = "boom";
             paper.Writing = $"{testString} {testString}";
             
-            paper.Erase(testString);
-            paper.Erase(testString);
+            paper.Erase(_eraser, testString);
+            paper.Erase(_eraser, testString);
             
             paper.Writing.ShouldBeNullOrWhiteSpace();
+        }
+
+        [Fact]
+        public void ErasingWithWornOutEraserOnlyErasesHalfTheWord()
+        {
+            var paper = new Paper(4);
+            var eraser = new Eraser(2);
+            var testString = "boom";
+            paper.Writing = testString;
+            
+            paper.Erase(eraser, testString);
+            
+            paper.Writing.ShouldBe("bo  ");
         }
     }
 }
