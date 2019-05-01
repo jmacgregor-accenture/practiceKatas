@@ -58,7 +58,7 @@ namespace PencilKata.Library
                 if (tool.Durability <= 0) break;
 
                 tool.Use(input[i]);
-                _currentWriting[FirstOpenSpace + i] = input[i];
+                InsertOrReplace(input, i, FirstOpenSpace);
             }
         }
 
