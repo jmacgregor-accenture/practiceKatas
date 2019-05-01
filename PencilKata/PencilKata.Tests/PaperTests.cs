@@ -87,5 +87,18 @@ namespace PencilKata.Tests
             
             paper.Writing.ShouldBe($"{testString}     ");
         }
+
+        [Fact]
+        public void ErasingTwiceRemovesTwoInstancesOfInput()
+        {
+            var paper = new Paper(9);
+            var testString = "boom";
+            paper.Writing = $"{testString} {testString}";
+            
+            paper.Erase(testString);
+            paper.Erase(testString);
+            
+            paper.Writing.ShouldBeNullOrWhiteSpace();
+        }
     }
 }

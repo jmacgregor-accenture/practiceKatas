@@ -4,6 +4,8 @@ namespace PencilKata.Library
 {
     public class Paper
     {
+        public string Writing { get; set; }
+        
         private int _lastIndexWritten;
 
         public Paper(int lengthOfWriting)
@@ -28,8 +30,6 @@ namespace PencilKata.Library
 
             Writing = new string(currentWriting);
         }
-
-        public string Writing { get; set; }
 
         public void Erase(string inputString)
         {
