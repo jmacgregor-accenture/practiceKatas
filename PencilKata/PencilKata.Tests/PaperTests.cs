@@ -63,5 +63,17 @@ namespace PencilKata.Tests
             
             paper.Writing.ShouldBe("    ");
         }
+
+        [Fact]
+        public void ErasingReplacesStringWithWhitespace()
+        {
+            var paper = new Paper(4);
+            var testString = "boom";
+            paper.Writing = testString;
+
+            paper.Erase(testString);
+            
+            paper.Writing.ShouldBe("    ");
+        }
     }
 }

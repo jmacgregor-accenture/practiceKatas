@@ -30,5 +30,19 @@ namespace PencilKata.Library
         }
 
         public string Writing { get; set; }
+
+        public void Erase(string testString)
+        {
+            var currentWriting = Writing.ToCharArray();
+            var indexToStartReplace = 0;
+
+            for (var i = 0; i < testString.Length; i++)
+            {
+                currentWriting[indexToStartReplace] = ' ';
+                indexToStartReplace++;
+            }
+            
+            Writing = new string(currentWriting);
+        }
     }
 }
