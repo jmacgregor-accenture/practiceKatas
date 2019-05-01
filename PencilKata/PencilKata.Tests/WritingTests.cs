@@ -53,5 +53,20 @@ namespace PencilKata.Tests
             
             paper.Writing.ShouldBe(stringOne + stringTwo);
         }
+
+        [Fact]
+        public void WhenWritingToPaperWithPencilShortPencilWillNotWriteAfterPointRunsOut()
+        {
+            SetupPencil(5,0);
+            var paper = new Paper(9);
+            var stringOne = "Well ";
+            var stringTwo = "Done";
+            
+            paper.Write(pencil, stringOne);
+            pencil.Sharpen();
+            paper.Write(pencil, stringTwo);
+            
+            paper.Writing.ShouldBe($"{stringOne}    ");
+        }
     }
 }
