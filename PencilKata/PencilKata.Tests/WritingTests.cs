@@ -68,5 +68,25 @@ namespace PencilKata.Tests
             
             paper.Writing.ShouldBe($"{stringOne}    ");
         }
+        
+        [Fact(Skip = "Got ahead of myself")]
+        public void WritingStringAndErasingLastWordThenWritingNewWordPaperShowsNewWordAtEndOfString()
+        {
+            SetupPencil(50);
+            var paper = new Paper(23);
+            paper.Write(pencil, "Do ");
+            paper.Write(pencil, "Re ");
+            paper.Write(pencil, "Mi ");
+            paper.Write(pencil, "Fu ");
+            paper.Write(pencil, "So ");
+            paper.Write(pencil, "La ");
+            paper.Write(pencil, "Ti ");
+            paper.Write(pencil, "Du");
+            
+            paper.Erase("Du");
+            paper.Write(pencil, "Do");
+            
+            paper.Writing.ShouldBe("Do Re Mi Fa So La Ti Do");
+        }
     }
 }
