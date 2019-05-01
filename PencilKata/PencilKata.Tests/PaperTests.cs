@@ -130,9 +130,23 @@ namespace PencilKata.Tests
             paper.Writing = "Heya Dude";
             paper.FirstOpenSpace = 9;
             
+            paper.Erase(_eraser, "Heya");
             paper.Edit(pencil, "Hey!");
             
             paper.Writing.ShouldBe("Hey! Dude");
+        }
+
+        [Fact]
+        public void EditWritingInsertsAtSignWhenEditingOverExistingText()
+        {
+            var paper = new Paper(9);
+            paper.Writing = "Heya Dude";
+            paper.FirstOpenSpace = 9;
+            
+            paper.Erase(_eraser, "Heya");
+            paper.Edit(pencil, "Hey! Yo");
+            
+            paper.Writing.ShouldBe("Hey! @@de");
         }
     }
 }

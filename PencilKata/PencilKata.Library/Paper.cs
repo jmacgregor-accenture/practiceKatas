@@ -62,7 +62,16 @@ namespace PencilKata.Library
                 if (pencil.PointDurability <= 0) break;
                 
                 pencil.Write(replaceWith[i]);
-                currentWriting[LastErasedSpot + i] = replaceWith[i];
+
+                if (char.IsWhiteSpace(currentWriting[LastErasedSpot + i]))
+                {
+                    currentWriting[LastErasedSpot + i] = replaceWith[i];
+                }
+                else
+                {
+                    currentWriting[LastErasedSpot + i] = '@';
+                }
+                
             }
             
             Writing = new string(currentWriting);
