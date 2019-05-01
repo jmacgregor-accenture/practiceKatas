@@ -9,8 +9,10 @@ namespace PencilKata.Library
             Durability = durability;
         }
 
-        public void Erase(char chracterToErase)
+        public void Erase(char characterToErase)
         {
+            if (char.IsWhiteSpace(characterToErase)) return;
+            
             Durability--;
         }
     }

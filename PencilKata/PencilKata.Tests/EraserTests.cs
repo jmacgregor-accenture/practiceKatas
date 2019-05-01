@@ -15,5 +15,18 @@ namespace PencilKata.Tests
 
             eraser.Durability.ShouldBe(4);
         }
+
+        [Theory]
+        [InlineData(' ', 5)]
+        [InlineData('\t', 5)]
+        [InlineData('\n', 5)]
+        public void EraserDoesNotDegradeOnWhiteSpace(char testChar, int expectedDurability)
+        {
+            var eraser = new Eraser(5);
+            
+            eraser.Erase(testChar);
+            
+            eraser.Durability.ShouldBe(expectedDurability);
+        }
     }
 }
