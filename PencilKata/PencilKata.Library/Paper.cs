@@ -19,15 +19,13 @@ namespace PencilKata.Library
         {
             _currentWriting = Writing.ToCharArray();
 
-            LoopThroughInput(pencil, input);
+            LoopThroughInput(pencil, input, FirstOpenSpace);
 
             FirstOpenSpace += input.Length;
 
             Writing = new string(_currentWriting);
         }
-
         
-
         public void Erase(Eraser eraser, string inputString)
         {
             var currentWriting = Writing.ToCharArray();
@@ -51,14 +49,15 @@ namespace PencilKata.Library
             Writing = new string(currentWriting);
         }
         
-        private void LoopThroughInput(IFiniteWritingTool tool, string input)
+        private void LoopThroughInput(IFiniteWritingTool tool, string input, 
+            int pointToStartWriting)
         {
             for (var i = 0; i < input.Length; i++)
             {
                 if (tool.Durability <= 0) break;
 
                 tool.Use(input[i]);
-                InsertOrReplace(input, i, FirstOpenSpace);
+                InsertOrReplace(input, i, pointToStartWriting);
             }
         }
 
@@ -66,13 +65,7 @@ namespace PencilKata.Library
         {
             _currentWriting = Writing.ToCharArray();
 
-            for (var i = 0; i < replaceWith.Length; i++)
-            {
-                if (pencil.Durability <= 0) break;
-                
-                pencil.Use(replaceWith[i]);
-                InsertOrReplace(replaceWith,i, LastErasedSpot);
-            }
+            LoopThroughInput(pencil, replaceWith, LastErasedSpot);
             
             Writing = new string(_currentWriting);
         }
