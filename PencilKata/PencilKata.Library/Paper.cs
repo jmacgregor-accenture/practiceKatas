@@ -64,29 +64,29 @@ namespace PencilKata.Library
 
         public void Edit(Pencil pencil, string replaceWith)
         {
-            var currentWriting = Writing.ToCharArray();
+            _currentWriting = Writing.ToCharArray();
 
             for (var i = 0; i < replaceWith.Length; i++)
             {
                 if (pencil.Durability <= 0) break;
                 
                 pencil.Use(replaceWith[i]);
-                InsertOrReplace(replaceWith, currentWriting, i, LastErasedSpot);
+                InsertOrReplace(replaceWith,i, LastErasedSpot);
             }
             
-            Writing = new string(currentWriting);
+            Writing = new string(_currentWriting);
         }
 
-        private void InsertOrReplace(string replaceWith, char[] currentWriting, int indexOfInput, int startPoint)
+        private void InsertOrReplace(string replaceWith, int indexOfInput, int startPoint)
         {
             var replacementChar = '@';
 
-            if (char.IsWhiteSpace(currentWriting[startPoint + indexOfInput]))
+            if (char.IsWhiteSpace(_currentWriting[startPoint + indexOfInput]))
             {
                 replacementChar = replaceWith[indexOfInput];
             }
 
-            currentWriting[startPoint + indexOfInput] = replacementChar;
+            _currentWriting[startPoint + indexOfInput] = replacementChar;
         }
     }
 }
