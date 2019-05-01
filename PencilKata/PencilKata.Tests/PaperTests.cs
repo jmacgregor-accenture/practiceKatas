@@ -60,7 +60,7 @@ namespace PencilKata.Tests
             var paper = new Paper(4);
             pencil.PointDurability = 0;
             
-            paper.Write(pencil,"Doesn't Matter" );
+            paper.Write(pencil,"Doesn't Matter");
             
             paper.Writing.ShouldBe("    ");
         }
@@ -71,6 +71,7 @@ namespace PencilKata.Tests
             var paper = new Paper(4);
             var testString = "boom";
             paper.Writing = testString;
+            paper.FirstOpenSpace = 4;
 
             paper.Erase(_eraser,testString);
             
@@ -83,6 +84,7 @@ namespace PencilKata.Tests
             var paper = new Paper(9);
             var testString = "boom";
             paper.Writing = $"{testString} {testString}";
+            paper.FirstOpenSpace = 9;
             
             paper.Erase(_eraser, testString);
             
@@ -95,6 +97,7 @@ namespace PencilKata.Tests
             var paper = new Paper(9);
             var testString = "boom";
             paper.Writing = $"{testString} {testString}";
+            paper.FirstOpenSpace = 9;
             
             paper.Erase(_eraser, testString);
             paper.Erase(_eraser, testString);
@@ -109,10 +112,23 @@ namespace PencilKata.Tests
             var eraser = new Eraser(2);
             var testString = "boom";
             paper.Writing = testString;
+            paper.FirstOpenSpace = 4;
             
             paper.Erase(eraser, testString);
             
             paper.Writing.ShouldBe("bo  ");
+        }
+
+        [Fact(Skip = "Did not factor in moving \'Last Index Written\'")]
+        public void EditWritingInsertsTextIntoLastErasedSpace()
+        {
+            var paper = new Paper(9);
+            paper.Writing = "Heya Dude";
+            paper.FirstOpenSpace = 9;
+            
+            paper.Edit(pencil, _eraser, "Heya", "Hey!");
+            
+            paper.Writing.ShouldBe("Hey! Dude");
         }
     }
 }

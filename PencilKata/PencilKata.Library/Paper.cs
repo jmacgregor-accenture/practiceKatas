@@ -4,7 +4,7 @@ namespace PencilKata.Library
     {
         public string Writing { get; set; }
         
-        private int _lastIndexWritten;
+        public int FirstOpenSpace { get; set; }
 
         public Paper(int lengthOfWriting)
         {
@@ -20,10 +20,10 @@ namespace PencilKata.Library
                 if (pencil.PointDurability <= 0) break;
                 
                 pencil.Write(input[i]);
-                currentWriting[_lastIndexWritten + i] = input[i];
+                currentWriting[FirstOpenSpace + i] = input[i];
             }
 
-            _lastIndexWritten += input.Length;
+            FirstOpenSpace += input.Length;
 
             Writing = new string(currentWriting);
         }
@@ -44,6 +44,12 @@ namespace PencilKata.Library
             }
             
             Writing = new string(currentWriting);
+        }
+
+        public void Edit(Pencil pencil, Eraser eraser, string toErase, string replaceWith)
+        {
+            Erase(eraser, toErase);
+            Write(pencil, replaceWith);
         }
     }
 }
