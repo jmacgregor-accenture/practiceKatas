@@ -24,8 +24,6 @@ namespace PencilKata.Library
             LoopThroughInput(pencil, input, FirstOpenSpace);
 
             FirstOpenSpace += input.Length;
-
-            Writing = new string(_currentWriting);
         }
         
         public void Erase(Eraser eraser, string inputString)
@@ -47,15 +45,11 @@ namespace PencilKata.Library
             }
 
             LastErasedSpot = lastErasedSpot;
-            
-            Writing = new string(_currentWriting);
         }
         
         public void Edit(Pencil pencil, string replaceWith)
         {
             LoopThroughInput(pencil, replaceWith, LastErasedSpot);
-            
-            Writing = new string(_currentWriting);
         }
         
         private void LoopThroughInput(IFiniteWritingTool tool, string input, 
