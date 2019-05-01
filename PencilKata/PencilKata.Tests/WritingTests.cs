@@ -68,6 +68,42 @@ namespace PencilKata.Tests
             
             paper.Writing.ShouldBe($"{stringOne}    ");
         }
+
+        [Fact]
+        public void WhenWritingToPaperWithPencilAndFullEraserWillWriteStringEraseStringAndWriteNewString()
+        {
+            SetupPencil(50);
+            var paper = new Paper(14);
+            var eraser = new Eraser(50);
+            var stringOne = "Well ";
+            var stringTwo = "Done ";
+            var stringThree = "You!";
+            
+            paper.Write(pencil, stringOne);
+            paper.Write(pencil, stringTwo);
+            paper.Erase(eraser, stringTwo);
+            paper.Write(pencil, stringThree);
+            
+            paper.Writing.ShouldBe($"{stringOne}     {stringThree}");
+        }
+
+        [Fact]
+        public void WhenWritingToPaperWithPencilAndLowEraserWillWriteStringEraseHalfWordAndWriteNewString()
+        {
+            SetupPencil(50);
+            var paper = new Paper(14);
+            var eraser = new Eraser(2);
+            var stringOne = "Well ";
+            var stringTwo = "Done ";
+            var stringThree = "You!";
+            
+            paper.Write(pencil, stringOne);
+            paper.Write(pencil, stringTwo);
+            paper.Erase(eraser, stringTwo);
+            paper.Write(pencil, stringThree);
+            
+            paper.Writing.ShouldBe($"{stringOne}Do   {stringThree}");
+        }
         
         [Fact(Skip = "Got ahead of myself")]
         public void WritingStringAndErasingLastWordThenWritingNewWordPaperShowsNewWordAtEndOfString()
