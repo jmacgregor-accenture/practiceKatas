@@ -55,7 +55,17 @@ namespace PencilKata.Library
 
         public void Edit(Pencil pencil, string replaceWith)
         {
+            var currentWriting = Writing.ToCharArray();
+
+            for (var i = 0; i < replaceWith.Length; i++)
+            {
+                if (pencil.PointDurability <= 0) break;
+                
+                pencil.Write(replaceWith[i]);
+                currentWriting[LastErasedSpot + i] = replaceWith[i];
+            }
             
+            Writing = new string(currentWriting);
         }
     }
 }

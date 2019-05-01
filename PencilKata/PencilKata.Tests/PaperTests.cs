@@ -123,7 +123,7 @@ namespace PencilKata.Tests
             paper.LastErasedSpot.ShouldBe(2);
         }
 
-        [Fact(Skip = "Refactoring Erase to have last-erased prop")]
+        [Fact]
         public void EditWritingInsertsTextIntoLastErasedSpace()
         {
             var paper = new Paper(9);
