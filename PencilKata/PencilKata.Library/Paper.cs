@@ -2,7 +2,11 @@ namespace PencilKata.Library
 {
     public class Paper
     {
-        public string Writing { get; set; }
+        public string Writing
+        {
+            get => GetWriting();
+            set => _currentWriting = value.ToCharArray();
+        }
         
         public int FirstOpenSpace { get; set; }
 
@@ -28,7 +32,7 @@ namespace PencilKata.Library
         
         public void Erase(Eraser eraser, string inputString)
         {
-            var currentWriting = Writing.ToCharArray();
+            _currentWriting = Writing.ToCharArray();
             var indexToStartReplace = Writing.LastIndexOf(inputString) + 
                                       inputString.Length - 1;
 
@@ -38,15 +42,25 @@ namespace PencilKata.Library
             {
                 if (eraser.Durability < 1) break;
                 
-                eraser.Use(currentWriting[indexToStartReplace]);
-                currentWriting[indexToStartReplace] = ' ';
+                eraser.Use(_currentWriting[indexToStartReplace]);
+                _currentWriting[indexToStartReplace] = ' ';
+                
                 lastErasedSpot--;
                 indexToStartReplace--;
             }
 
             LastErasedSpot = lastErasedSpot;
             
-            Writing = new string(currentWriting);
+            Writing = new string(_currentWriting);
+        }
+        
+        public void Edit(Pencil pencil, string replaceWith)
+        {
+            _currentWriting = Writing.ToCharArray();
+
+            LoopThroughInput(pencil, replaceWith, LastErasedSpot);
+            
+            Writing = new string(_currentWriting);
         }
         
         private void LoopThroughInput(IFiniteWritingTool tool, string input, 
@@ -60,16 +74,7 @@ namespace PencilKata.Library
                 InsertOrReplace(input, i, pointToStartWriting);
             }
         }
-
-        public void Edit(Pencil pencil, string replaceWith)
-        {
-            _currentWriting = Writing.ToCharArray();
-
-            LoopThroughInput(pencil, replaceWith, LastErasedSpot);
-            
-            Writing = new string(_currentWriting);
-        }
-
+        
         private void InsertOrReplace(string replaceWith, int indexOfInput, int startPoint)
         {
             var replacementChar = '@';
@@ -80,6 +85,11 @@ namespace PencilKata.Library
             }
 
             _currentWriting[startPoint + indexOfInput] = replacementChar;
+        }
+
+        private string GetWriting()
+        {
+            return new string(_currentWriting);
         }
     }
 }
