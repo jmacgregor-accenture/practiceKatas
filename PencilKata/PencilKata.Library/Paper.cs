@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 namespace PencilKata.Library
 {
     public class Paper
@@ -23,7 +21,6 @@ namespace PencilKata.Library
                 
                 pencil.Write(input[i]);
                 currentWriting[_lastIndexWritten + i] = input[i];
-
             }
 
             _lastIndexWritten += input.Length;
@@ -34,14 +31,15 @@ namespace PencilKata.Library
         public void Erase(Eraser eraser, string inputString)
         {
             var currentWriting = Writing.ToCharArray();
-            var indexToStartReplace = Writing.LastIndexOf(inputString) + inputString.Length;
+            var indexToStartReplace = Writing.LastIndexOf(inputString) + 
+                                      inputString.Length - 1;
 
             for (var i = inputString.Length; i > 0; i--)
             {
                 if (eraser.Durability < 1) break;
                 
-                eraser.Erase(currentWriting[indexToStartReplace - 1]);
-                currentWriting[indexToStartReplace - 1] = ' ';
+                eraser.Erase(currentWriting[indexToStartReplace]);
+                currentWriting[indexToStartReplace] = ' ';
                 indexToStartReplace--;
             }
             
