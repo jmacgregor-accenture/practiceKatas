@@ -76,6 +76,7 @@ namespace PencilKata.Tests
             paper.Erase(_eraser,testString);
             
             paper.Writing.ShouldBe("    ");
+            paper.LastErasedSpot.ShouldBe(0);
         }
 
         [Fact]
@@ -88,6 +89,7 @@ namespace PencilKata.Tests
             
             paper.Erase(_eraser, testString);
             
+            paper.LastErasedSpot.ShouldBe(5);
             paper.Writing.ShouldBe($"{testString}     ");
         }
 
@@ -103,6 +105,7 @@ namespace PencilKata.Tests
             paper.Erase(_eraser, testString);
             
             paper.Writing.ShouldBeNullOrWhiteSpace();
+            paper.LastErasedSpot.ShouldBe(0);
         }
 
         [Fact]
@@ -117,16 +120,17 @@ namespace PencilKata.Tests
             paper.Erase(eraser, testString);
             
             paper.Writing.ShouldBe("bo  ");
+            paper.LastErasedSpot.ShouldBe(2);
         }
 
-        [Fact(Skip = "Did not factor in moving \'Last Index Written\'")]
+        [Fact(Skip = "Refactoring Erase to have last-erased prop")]
         public void EditWritingInsertsTextIntoLastErasedSpace()
         {
             var paper = new Paper(9);
             paper.Writing = "Heya Dude";
             paper.FirstOpenSpace = 9;
             
-            paper.Edit(pencil, _eraser, "Heya", "Hey!");
+            paper.Edit(pencil, "Hey!");
             
             paper.Writing.ShouldBe("Hey! Dude");
         }

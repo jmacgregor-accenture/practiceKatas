@@ -6,6 +6,8 @@ namespace PencilKata.Library
         
         public int FirstOpenSpace { get; set; }
 
+        public int LastErasedSpot { get; set; }
+
         public Paper(int lengthOfWriting)
         {
             Writing = new string(' ', lengthOfWriting);
@@ -34,22 +36,26 @@ namespace PencilKata.Library
             var indexToStartReplace = Writing.LastIndexOf(inputString) + 
                                       inputString.Length - 1;
 
+            var lastErasedSpot = Writing.LastIndexOf(inputString) + inputString.Length;
+
             for (var i = inputString.Length; i > 0; i--)
             {
                 if (eraser.Durability < 1) break;
                 
                 eraser.Erase(currentWriting[indexToStartReplace]);
                 currentWriting[indexToStartReplace] = ' ';
+                lastErasedSpot--;
                 indexToStartReplace--;
             }
+
+            LastErasedSpot = lastErasedSpot;
             
             Writing = new string(currentWriting);
         }
 
-        public void Edit(Pencil pencil, Eraser eraser, string toErase, string replaceWith)
+        public void Edit(Pencil pencil, string replaceWith)
         {
-            Erase(eraser, toErase);
-            Write(pencil, replaceWith);
+            
         }
     }
 }
