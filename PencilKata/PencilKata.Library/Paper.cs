@@ -31,12 +31,12 @@ namespace PencilKata.Library
 
         public string Writing { get; set; }
 
-        public void Erase(string testString)
+        public void Erase(string inputString)
         {
             var currentWriting = Writing.ToCharArray();
-            var indexToStartReplace = 0;
+            var indexToStartReplace = Writing.LastIndexOf(inputString);
 
-            for (var i = 0; i < testString.Length; i++)
+            for (var i = 0; i < inputString.Length; i++)
             {
                 currentWriting[indexToStartReplace] = ' ';
                 indexToStartReplace++;
