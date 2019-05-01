@@ -28,23 +28,20 @@ namespace PencilKata.Library
         
         public void Erase(Eraser eraser, string inputString)
         {
-            var indexToStartReplace = Writing.LastIndexOf(inputString) + 
-                                      inputString.Length - 1;
-
-            var lastErasedSpot = Writing.LastIndexOf(inputString) + inputString.Length;
+            var startErase = Writing.LastIndexOf(inputString) + inputString.Length;
 
             for (var i = inputString.Length; i > 0; i--)
             {
                 if (eraser.Durability < 1) break;
-                
-                eraser.Use(_currentWriting[indexToStartReplace]);
-                _currentWriting[indexToStartReplace] = ' ';
-                
-                lastErasedSpot--;
-                indexToStartReplace--;
+
+                var eraseIndex = startErase - 1;
+                eraser.Use(_currentWriting[eraseIndex]);
+                _currentWriting[eraseIndex] = ' ';
+
+                startErase--;
             }
 
-            LastErasedSpot = lastErasedSpot;
+            LastErasedSpot = startErase;
         }
         
         public void Edit(Pencil pencil, string replaceWith)

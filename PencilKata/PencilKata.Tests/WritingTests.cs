@@ -105,7 +105,7 @@ namespace PencilKata.Tests
             paper.Writing.ShouldBe($"{stringOne}Do   {stringThree}");
         }
         
-        [Fact(Skip = "Got ahead of myself")]
+        [Fact]
         public void WritingStringAndErasingLastWordThenWritingNewWordPaperShowsNewWordAtEndOfString()
         {
             SetupPencil(50);
@@ -120,8 +120,10 @@ namespace PencilKata.Tests
             paper.Write(pencil, "Ti ");
             paper.Write(pencil, "Du");
             
+            paper.Erase(eraser,"Fu");
+            paper.Edit(pencil, "Fa");
             paper.Erase(eraser,"Du");
-            paper.Write(pencil, "Do");
+            paper.Edit(pencil, "Do");
             
             paper.Writing.ShouldBe("Do Re Mi Fa So La Ti Do");
         }
