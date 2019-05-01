@@ -21,8 +21,6 @@ namespace PencilKata.Library
 
         public void Write(IFiniteWritingTool pencil, string input)
         {
-            _currentWriting = Writing.ToCharArray();
-
             LoopThroughInput(pencil, input, FirstOpenSpace);
 
             FirstOpenSpace += input.Length;
@@ -32,7 +30,6 @@ namespace PencilKata.Library
         
         public void Erase(Eraser eraser, string inputString)
         {
-            _currentWriting = Writing.ToCharArray();
             var indexToStartReplace = Writing.LastIndexOf(inputString) + 
                                       inputString.Length - 1;
 
@@ -56,8 +53,6 @@ namespace PencilKata.Library
         
         public void Edit(Pencil pencil, string replaceWith)
         {
-            _currentWriting = Writing.ToCharArray();
-
             LoopThroughInput(pencil, replaceWith, LastErasedSpot);
             
             Writing = new string(_currentWriting);
