@@ -52,7 +52,7 @@ namespace ZombieKata.Tests
                 _survivor.Harm();
             }
             
-            _survivor.IsAlive.ShouldBeFalse();
+            _survivor.IsDead.ShouldBeTrue();
         }
 
         [Fact]
