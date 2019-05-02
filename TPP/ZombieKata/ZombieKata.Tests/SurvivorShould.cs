@@ -32,6 +32,14 @@ namespace ZombieKata.Tests
         }
 
         [Fact]
+        public void StartWithCorrectNumberOfActions()
+        {
+            CreateHealthyPhillip();
+
+            _survivor.Actions.ShouldBe(3);
+        }
+
+        [Fact]
         public void BeWoundedWhenHarmed()
         {
             CreateHealthyPhillip();
