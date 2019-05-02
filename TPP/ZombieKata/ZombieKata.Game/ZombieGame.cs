@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ZombieKata.Game
 {
@@ -13,6 +14,8 @@ namespace ZombieKata.Game
 
         public void AddSurvivor(Survivor player)
         {
+            if (Survivors.Any(survivor => survivor.Name == player.Name)) return;
+            
             Survivors.Add(player);
         }
     }

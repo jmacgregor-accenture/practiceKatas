@@ -24,5 +24,18 @@ namespace ZombieKata.Tests
             
             game.Survivors.Count.ShouldBe(1);
         }
+
+        [Fact]
+        public void OnlyAddUniquePlayers()
+        {
+            var game = new ZombieGame();
+            var survivorOne = new Survivor("William");
+            var survivorTwo = new Survivor("William");
+            
+            game.AddSurvivor(survivorOne);
+            game.AddSurvivor(survivorTwo);
+            
+            game.Survivors.Count.ShouldBe(1);
+        }
     }
 }
