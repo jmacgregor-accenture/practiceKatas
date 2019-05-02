@@ -32,5 +32,13 @@ namespace ZombieKata.Tests
 
             _survivor.ActionsPerTurn.ShouldBe(3);
         }
+
+        [Fact]
+        public void CorrectNumberOfEquipmentSlotsAtStart()
+        {
+            _survivor = CreateHealthyPhillip();
+
+            _survivor.EquipmentCapacity.ShouldBe(5);
+        }
     }
 }
