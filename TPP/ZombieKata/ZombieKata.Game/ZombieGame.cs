@@ -18,5 +18,10 @@ namespace ZombieKata.Game
             
             Survivors.Add(player);
         }
+
+        public bool IsOver()
+        {
+            return Survivors.TrueForAll(survivor => survivor.IsDead);
+        }
     }
 }

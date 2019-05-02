@@ -37,5 +37,19 @@ namespace ZombieKata.Tests
             
             game.Survivors.Count.ShouldBe(1);
         }
+
+        [Fact]
+        public void EndIfAllPlayersAreDead()
+        {
+            var game = new ZombieGame();
+            var survivor = new Survivor("Harry");
+            survivor.Harm();
+            survivor.Harm();
+            game.AddSurvivor(survivor);
+
+            var result = game.IsOver();
+
+            result.ShouldBeTrue();
+        }
     }
 }
