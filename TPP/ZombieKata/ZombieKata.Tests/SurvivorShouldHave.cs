@@ -1,23 +1,18 @@
 using Shouldly;
 using Xunit;
 using ZombieKata.Game;
+using static ZombieKata.Tests.SurvivorFactory;
 
 namespace ZombieKata.Tests
 {
     public class SurvivorShouldHave
     {
-        private const string PHILLIP = "Phillip";
         private Survivor _survivor;
-
-        private void CreateHealthyPhillip()
-        {
-            _survivor = new Survivor(PHILLIP);
-        }
         
         [Fact]
         public void Name()
         {
-            CreateHealthyPhillip();
+            _survivor = CreateHealthyPhillip();
 
             _survivor.Name.ShouldBe(PHILLIP);
         }
@@ -25,7 +20,7 @@ namespace ZombieKata.Tests
         [Fact]
         public void NoWoundsAtStart()
         {
-            CreateHealthyPhillip();
+            _survivor = CreateHealthyPhillip();
 
             _survivor.Wounds.ShouldBe(0);
         }
@@ -33,7 +28,7 @@ namespace ZombieKata.Tests
         [Fact]
         public void CorrectNumberOfActionsAtStart()
         {
-            CreateHealthyPhillip();
+            _survivor = CreateHealthyPhillip();
 
             _survivor.ActionsPerTurn.ShouldBe(3);
         }
