@@ -14,7 +14,7 @@ namespace PencilKata.Tests
         }
         
         [Fact]
-        public void WhenWritingToPaperWithSharpPencilWritingAppearsAndPointDegrades()
+        public void WritingWithSharpPencilPutsWritingOnPaperAndDegradesPoint()
         {
             SetupPencil(50);
             var paper = new Paper(14);
@@ -27,7 +27,7 @@ namespace PencilKata.Tests
         }
 
         [Fact]
-        public void WhenWritingToPaperWithDullPencilOnlyWhitespaceIsReturned()
+        public void WritingWithDullPencilOnlyWhitespaceIsOnPaper()
         {
             SetupPencil(5);
             var paper = new Paper(14);
@@ -40,7 +40,7 @@ namespace PencilKata.Tests
         }
 
         [Fact]
-        public void WhenWritingToPaperWithPencilSharpeningBetweenStringsAllowsAllToAppend()
+        public void SharpeningBetweenStringsAllowsPencilToWriteAfterGoingDull()
         {
             SetupPencil(5,1);
             var paper = new Paper(9);
@@ -55,7 +55,7 @@ namespace PencilKata.Tests
         }
 
         [Fact]
-        public void WhenWritingToPaperWithPencilShortPencilWillNotWriteAfterPointRunsOut()
+        public void SharpeningShortPencilWillNotWriteAfterSharpening()
         {
             SetupPencil(5,0);
             var paper = new Paper(9);
@@ -70,7 +70,7 @@ namespace PencilKata.Tests
         }
 
         [Fact]
-        public void WhenWritingToPaperWithPencilAndFullEraserWillWriteStringEraseStringAndWriteNewString()
+        public void ErasingWithFullEraserWillWriteStringEraseStringAndWriteNewString()
         {
             SetupPencil(50);
             var paper = new Paper(14);
@@ -88,7 +88,7 @@ namespace PencilKata.Tests
         }
 
         [Fact]
-        public void WhenWritingToPaperWithPencilAndLowEraserWillWriteStringEraseHalfWordAndWriteNewString()
+        public void ErasingWithWornDownEraserLeavesPartOfErasedStringBehind()
         {
             SetupPencil(50);
             var paper = new Paper(14);
@@ -106,7 +106,7 @@ namespace PencilKata.Tests
         }
         
         [Fact]
-        public void WritingStringAndErasingLastWordThenWritingNewWordPaperShowsNewWordAtEndOfString()
+        public void ErasingAndEditingTheFourthAndFinalStringsUpdatesPaperWritingToNewContents()
         {
             SetupPencil(50);
             var eraser = new Eraser(25);
