@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Shouldly;
 using Xunit;
 using ZombieKata.Game;
@@ -39,6 +40,15 @@ namespace ZombieKata.Tests
             _survivor = CreateHealthyPhillip();
 
             _survivor.EquipmentCapacity.ShouldBe(5);
+        }
+
+        [Fact]
+        public void EmptyEquipmentListWhenStarting()
+        {
+            _survivor = CreateHealthyPhillip();
+
+            _survivor.Equipment.ShouldBeOfType<List<Equipment>>();
+            _survivor.Equipment.Count.ShouldBe(0);
         }
     }
 }

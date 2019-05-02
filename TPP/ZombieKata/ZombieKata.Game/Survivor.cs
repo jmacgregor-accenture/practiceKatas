@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ZombieKata.Game
 {
@@ -10,12 +11,14 @@ namespace ZombieKata.Game
         public bool IsDead { get; private set; }
         public int ActionsPerTurn { get;}
         public int EquipmentCapacity { get; set; }
+        public List<Equipment> Equipment { get; set; }
 
         public Survivor(string name)
         {
             Name = name;
             ActionsPerTurn = 3;
             EquipmentCapacity = DEFAULT_EQUIPMENT_CAPACITY;
+            Equipment = new List<Equipment>();
         }
 
         public void Harm()
