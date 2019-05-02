@@ -36,7 +36,7 @@ namespace ZombieKata.Tests
         {
             CreateHealthyPhillip();
 
-            _survivor.Actions.ShouldBe(3);
+            _survivor.ActionsPerTurn.ShouldBe(3);
         }
 
         [Fact]

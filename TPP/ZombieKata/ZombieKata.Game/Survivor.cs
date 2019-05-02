@@ -7,12 +7,12 @@ namespace ZombieKata.Game
         public string Name { get; }
         public int Wounds { get; private set; }
         public bool IsDead { get; private set; }
-        public int Actions { get;}
+        public int ActionsPerTurn { get;}
 
         public Survivor(string name)
         {
             Name = name;
-            Actions = 3;
+            ActionsPerTurn = 3;
         }
 
 
