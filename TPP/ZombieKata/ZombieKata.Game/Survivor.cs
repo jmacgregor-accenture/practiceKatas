@@ -17,6 +17,8 @@ namespace ZombieKata.Game
 
         public void Harm()
         {
+            if (IsAlive == false) return;
+            
             Wounds++;
 
             if (Wounds == 2)

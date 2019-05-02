@@ -55,7 +55,7 @@ namespace ZombieKata.Tests
             _survivor.IsAlive.ShouldBeFalse();
         }
 
-        [Fact(Skip = "Need to split test")]
+        [Fact]
         public void NotBeWoundedAfterDeath()
         {
             CreateHealthyPhillip();
@@ -67,7 +67,6 @@ namespace ZombieKata.Tests
             }
             
             _survivor.Wounds.ShouldBe(2);
-            _survivor.IsAlive.ShouldBeFalse();
         }
     }
 }
