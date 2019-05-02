@@ -13,5 +13,16 @@ namespace ZombieKata.Tests
 
             game.Survivors.Count.ShouldBe(0);
         }
+
+        [Fact]
+        public void AddPlayers()
+        {
+            var game = new ZombieGame();
+            var newSurvivor = new Survivor("Charles");
+
+            game.AddSurvivor(newSurvivor);
+            
+            game.Survivors.Count.ShouldBe(1);
+        }
     }
 }

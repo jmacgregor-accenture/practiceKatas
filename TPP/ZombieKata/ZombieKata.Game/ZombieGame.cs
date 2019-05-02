@@ -10,5 +10,10 @@ namespace ZombieKata.Game
         {
             Survivors = new List<Survivor>();
         }
+
+        public void AddSurvivor(Survivor player)
+        {
+            Survivors.Add(player);
+        }
     }
 }
