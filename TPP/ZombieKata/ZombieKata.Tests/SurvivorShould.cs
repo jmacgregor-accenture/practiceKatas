@@ -15,5 +15,15 @@ namespace ZombieKata.Tests
 
             survivor.Name.ShouldBe(testName);
         }
+
+        [Fact]
+        public void StartWithNoWounds()
+        {
+            var testName = "Phillip";
+            
+            var survivor = new Survivor(testName);
+
+            survivor.Wounds.ShouldBe(0);
+        }
     }
 }
