@@ -6,16 +6,23 @@ namespace ZombieKata.Game
     {
         public string Name { get; }
         public int Wounds { get; private set; }
+        public bool IsAlive { get; private set; }
 
         public Survivor(string name)
         {
             Name = name;
+            IsAlive = true;
         }
 
 
         public void Harm()
         {
             Wounds++;
+
+            if (Wounds == 2)
+            {
+                IsAlive = false;
+            }
         }
     }
 }

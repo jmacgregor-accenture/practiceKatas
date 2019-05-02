@@ -40,5 +40,34 @@ namespace ZombieKata.Tests
             
             _survivor.Wounds.ShouldBe(1);
         }
+
+        [Fact]
+        public void DieWithTwoWounds()
+        {
+            CreateHealthyPhillip();
+            var lethalAmountOfWounds = 2;
+
+            for (var i = 0; i < lethalAmountOfWounds; i++)
+            {
+                _survivor.Harm();
+            }
+            
+            _survivor.IsAlive.ShouldBeFalse();
+        }
+
+        [Fact(Skip = "Need to split test")]
+        public void NotBeWoundedAfterDeath()
+        {
+            CreateHealthyPhillip();
+            var lethalAmountOfWounds = 2;
+
+            for (var i = 0; i < lethalAmountOfWounds + 1; i++)
+            {
+                _survivor.Harm();
+            }
+            
+            _survivor.Wounds.ShouldBe(2);
+            _survivor.IsAlive.ShouldBeFalse();
+        }
     }
 }
