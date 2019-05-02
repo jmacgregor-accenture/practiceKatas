@@ -23,6 +23,7 @@ namespace ZombieKata.Game
             if (IsDead) return;
             
             Wounds++;
+            EquipmentCapacity--;
 
             if (Wounds == 2)
             {

@@ -46,5 +46,15 @@ namespace ZombieKata.Tests
             
             _survivor.Wounds.ShouldBe(2);
         }
+
+        [Fact]
+        public void LoseEquipmentSlotWhenHarmed()
+        {
+            _survivor = CreateHealthyPhillip();
+            
+            _survivor.Harm();
+            
+            _survivor.EquipmentCapacity.ShouldBe(2);
+        }
     }
 }
