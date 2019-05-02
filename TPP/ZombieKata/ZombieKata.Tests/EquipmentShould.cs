@@ -15,5 +15,13 @@ namespace ZombieKata.Tests
 
             equipment.Name.ShouldBe(testName);
         }
+
+        [Fact]
+        public void NotBeEquipped()
+        {
+            var equipment = new Equipment("noname");
+
+            equipment.InHand.ShouldBeFalse();
+        }
     }
 }
