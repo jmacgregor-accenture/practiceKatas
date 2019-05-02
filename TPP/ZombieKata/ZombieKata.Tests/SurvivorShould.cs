@@ -34,7 +34,11 @@ namespace ZombieKata.Tests
         [Fact]
         public void BeWoundedWhenHarmed()
         {
+            CreateHealthyPhillip();
+
+            _survivor.Harm();
             
+            _survivor.Wounds.ShouldBe(1);
         }
     }
 }
