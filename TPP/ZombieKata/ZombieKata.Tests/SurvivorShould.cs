@@ -54,7 +54,7 @@ namespace ZombieKata.Tests
             
             _survivor.Harm();
             
-            _survivor.EquipmentCapacity.ShouldBe(2);
+            _survivor.EquipmentCapacity.ShouldBe(4);
         }
     }
 }

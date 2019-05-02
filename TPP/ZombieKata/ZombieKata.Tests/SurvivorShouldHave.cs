@@ -38,7 +38,7 @@ namespace ZombieKata.Tests
         {
             _survivor = CreateHealthyPhillip();
 
-            _survivor.EquipmentCapacity.ShouldBe(3);
+            _survivor.EquipmentCapacity.ShouldBe(5);
         }
     }
 }
