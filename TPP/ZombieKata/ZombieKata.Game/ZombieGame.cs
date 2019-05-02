@@ -4,7 +4,7 @@ namespace ZombieKata.Game
 {
     public class ZombieGame
     {
-        public List<Survivor> Survivors { get; set; }
+        public List<Survivor> Survivors { get;  }
 
         public ZombieGame()
         {
