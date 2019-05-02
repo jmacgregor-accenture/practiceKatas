@@ -1,4 +1,3 @@
-using System.Runtime.InteropServices;
 using Xunit;
 using Shouldly;
 using ZombieKata.Game;
@@ -13,30 +12,6 @@ namespace ZombieKata.Tests
         private void CreateHealthyPhillip()
         {
             _survivor = new Survivor(PHILLIP);
-        }
-        
-        [Fact]
-        public void HaveName()
-        {
-            CreateHealthyPhillip();
-
-            _survivor.Name.ShouldBe(PHILLIP);
-        }
-
-        [Fact]
-        public void StartWithNoWounds()
-        {
-            CreateHealthyPhillip();
-
-            _survivor.Wounds.ShouldBe(0);
-        }
-
-        [Fact]
-        public void StartWithCorrectNumberOfActions()
-        {
-            CreateHealthyPhillip();
-
-            _survivor.ActionsPerTurn.ShouldBe(3);
         }
 
         [Fact]
