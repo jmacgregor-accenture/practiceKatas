@@ -4,7 +4,7 @@ namespace ZombieKata.Game
 {
     public class Survivor
     {
-        private const int DEFAULT_EQUIPMENT_CAPACITY = 5;
+        private const int DEFAULT_RESERVE_EQUIPMENT_CAPACITY = 3;
         public string Name { get; }
         public int Wounds { get; private set; }
         public bool IsDead { get; private set; }
@@ -15,7 +15,7 @@ namespace ZombieKata.Game
         {
             Name = name;
             ActionsPerTurn = 3;
-            EquipmentCapacity = DEFAULT_EQUIPMENT_CAPACITY;
+            EquipmentCapacity = DEFAULT_RESERVE_EQUIPMENT_CAPACITY;
         }
 
         public void Harm()
