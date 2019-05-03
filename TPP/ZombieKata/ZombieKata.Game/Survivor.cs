@@ -46,17 +46,15 @@ namespace ZombieKata.Game
 
         private void SetLevel()
         {
-            var levelToSet = Level;
             
             foreach (var level in Levels)
             {
                 if (Experience > level.Value)
                 {
-                    levelToSet = level.Key;
+                    Level = level.Key;
                 }
             }
 
-            Level = levelToSet;
         }
     }
 }
