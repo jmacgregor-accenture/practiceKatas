@@ -112,5 +112,19 @@ namespace ZombieKata.Tests
             _survivor.Experience.ShouldBe(19);
             _survivor.Level.ShouldBe("Orange");
         }
+
+        [Fact]
+        public void NotAdvanceWhenThresholdIsNotCrossed()
+        {
+            var orangeThreshold = Levels["Orange"];
+            _survivor = CreateHealthyPhillip();
+
+            for (var i = 0; i < orangeThreshold; i++)
+            {
+                _survivor.AddExperience();
+            }
+            
+            _survivor.Level.ShouldBe("Yellow");
+        }
     }
 }
