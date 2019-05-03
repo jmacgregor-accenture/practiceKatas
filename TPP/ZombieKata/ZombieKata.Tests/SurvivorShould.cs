@@ -86,13 +86,10 @@ namespace ZombieKata.Tests
         [Fact]
         public void AdvanceToYellowWhenCrossingExperienceThreshold()
         {
-            var yellowThreshold = 6;
+            var yellowThreshold = Levels["Yellow"];
             _survivor = CreateHealthyPhillip();
 
-            for (var i = 0; i < yellowThreshold + 1; i++)
-            {
-                _survivor.AddExperience();
-            }
+            AddManyExperience(yellowThreshold + 1);
             
             _survivor.Experience.ShouldBe(7);
             _survivor.Level.ShouldBe("Yellow");
@@ -101,13 +98,10 @@ namespace ZombieKata.Tests
         [Fact]
         public void AdvanceToOrangeWhenCrossingExperienceThreshold()
         {
-            var orangeThreshold = 18;
+            var orangeThreshold = Levels["Orange"];
             _survivor = CreateHealthyPhillip();
 
-            for (var i = 0; i < orangeThreshold + 1; i++)
-            {
-                _survivor.AddExperience();
-            }
+            AddManyExperience(orangeThreshold + 1);
             
             _survivor.Experience.ShouldBe(19);
             _survivor.Level.ShouldBe("Orange");
@@ -119,12 +113,17 @@ namespace ZombieKata.Tests
             var orangeThreshold = Levels["Orange"];
             _survivor = CreateHealthyPhillip();
 
-            for (var i = 0; i < orangeThreshold; i++)
+            AddManyExperience(orangeThreshold);
+            
+            _survivor.Level.ShouldBe("Yellow");
+        }
+
+        private void AddManyExperience(int amountOfExperience)
+        {
+            for (var i = 0; i < amountOfExperience; i++)
             {
                 _survivor.AddExperience();
             }
-            
-            _survivor.Level.ShouldBe("Yellow");
         }
     }
 }
