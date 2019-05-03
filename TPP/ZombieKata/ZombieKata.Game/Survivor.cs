@@ -45,6 +45,11 @@ namespace ZombieKata.Game
             {
                 Level = "Yellow";
             }
+
+            if (Experience > 18)
+            {
+                Level = "Orange";
+            }
         }
     }
 }
