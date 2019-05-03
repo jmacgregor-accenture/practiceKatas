@@ -110,7 +110,7 @@ namespace ZombieKata.Tests
         {
             var game = new ZombieGame();
 
-            game.Log.ShouldContain("The Game Is Afoot!");
+            game.History.ShouldContain("The Game Is Afoot!");
         }
     }
 }
