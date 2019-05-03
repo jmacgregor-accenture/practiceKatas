@@ -22,6 +22,7 @@ namespace ZombieKata.Game
             if (Survivors.Any(survivor => survivor.Name == player.Name)) return;
             
             Survivors.Add(player);
+            History += $"{player.Name} Added!";
         }
 
         public bool IsOver()
