@@ -50,5 +50,13 @@ namespace ZombieKata.Tests
             _survivor.Equipment.ShouldBeOfType<List<Equipment>>();
             _survivor.Equipment.Count.ShouldBe(0);
         }
+
+        [Fact]
+        public void StartingExperienceOfZero()
+        {
+            _survivor = CreateHealthyPhillip();
+
+            _survivor.Experience.ShouldBe(0);
+        }
     }
 }

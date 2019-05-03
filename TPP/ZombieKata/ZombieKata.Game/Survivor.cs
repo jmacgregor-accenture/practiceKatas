@@ -12,6 +12,7 @@ namespace ZombieKata.Game
         public int ActionsPerTurn { get;}
         public int EquipmentCapacity { get; set; }
         public List<Equipment> Equipment { get; set; }
+        public int Experience { get; set; }
 
         public Survivor(string name)
         {
