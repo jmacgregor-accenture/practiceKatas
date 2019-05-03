@@ -82,5 +82,20 @@ namespace ZombieKata.Tests
             
             _survivor.Experience.ShouldBe(1);
         }
+
+        [Fact]
+        public void AdvanceToYellowWhenCrossingExperienceThreshold()
+        {
+            var yellowThreshold = 6;
+            _survivor = CreateHealthyPhillip();
+
+            for (var i = 0; i < yellowThreshold + 1; i++)
+            {
+                _survivor.AddExperience();
+            }
+            
+            _survivor.Experience.ShouldBe(7);
+            _survivor.Level.ShouldBe("Yellow");
+        }
     }
 }
