@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using static ZombieKata.Game.Levels;
 
 namespace ZombieKata.Game
@@ -29,6 +30,11 @@ namespace ZombieKata.Game
             
             Wounds++;
             EquipmentCapacity--;
+
+            if (EquipmentCapacity < Equipment.Count)
+            {
+                Equipment.Remove(Equipment.Last());
+            }
 
             if (Wounds == 2)
             {

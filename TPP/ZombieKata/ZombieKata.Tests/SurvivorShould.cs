@@ -92,15 +92,15 @@ namespace ZombieKata.Tests
             _survivor.Equipment.Count.ShouldBe(_survivor.EquipmentCapacity);
         }
 
-        [Fact(Skip = "Placeholder to remember to add equipment reduction")]
+        [Fact]
         public void DiscardEquipmentWhenCarryingMoreThanNewCapacity()
         {
             var maxEquipNumber = 5;
             _survivor = CreateHealthyPhillip();
-            
-            // TODO
-            // implement a way to add equipment
-            // add max number of equipment
+            for (var i = 0; i < maxEquipNumber; i++)
+            {
+                _survivor.AddEquipment(new Equipment($"Sword{i+1}"));
+            }
             
             _survivor.Harm();
             
