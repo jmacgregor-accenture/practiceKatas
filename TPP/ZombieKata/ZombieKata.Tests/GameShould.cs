@@ -76,13 +76,14 @@ namespace ZombieKata.Tests
             game.Level.ShouldBe(Levels.BLUE);
         }
 
-        [Fact(Skip = "Redesign Needed")]
+        [Fact]
         public void HaveLevelThatMatchesHighestPlayerLevel()
         {
             var game = new ZombieGame();
             var survivorOne = new Survivor("Charles");
             survivorOne.Level = Levels.YELLOW;
-
+            game.AddSurvivor(survivorOne);
+            
             game.SetLevel();
             
             game.Level.ShouldBe(Levels.YELLOW);
