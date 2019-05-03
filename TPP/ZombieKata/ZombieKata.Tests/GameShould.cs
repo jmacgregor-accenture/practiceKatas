@@ -67,5 +67,13 @@ namespace ZombieKata.Tests
 
             result.ShouldBeFalse();
         }
+
+        [Fact]
+        public void StartAtLevelBlue()
+        {
+            var game = new ZombieGame();
+
+            game.Level.ShouldBe("Blue");
+        }
     }
 }
