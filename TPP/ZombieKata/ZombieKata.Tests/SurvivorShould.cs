@@ -1,3 +1,4 @@
+using System.Globalization;
 using Xunit;
 using Shouldly;
 using ZombieKata.Game;
@@ -70,6 +71,16 @@ namespace ZombieKata.Tests
             _survivor.Harm();
             
             _survivor.Equipment.Count.ShouldBe(maxEquipNumber - 1);
+        }
+
+        [Fact]
+        public void AddExperienceOnePointEachCall()
+        {
+            _survivor = CreateHealthyPhillip();
+
+            _survivor.AddExperience();
+            
+            _survivor.Experience.ShouldBe(1);
         }
     }
 }

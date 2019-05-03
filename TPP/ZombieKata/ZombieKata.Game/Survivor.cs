@@ -36,5 +36,10 @@ namespace ZombieKata.Game
                 IsDead = true;
             }
         }
+
+        public void AddExperience()
+        {
+            Experience++;
+        }
     }
 }
