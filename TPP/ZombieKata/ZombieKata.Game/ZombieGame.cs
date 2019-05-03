@@ -6,12 +6,12 @@ namespace ZombieKata.Game
     public class ZombieGame
     {
         public List<Survivor> Survivors { get;  }
-        public string Level { get; set; }
+        public Level Level { get; set; }
 
         public ZombieGame()
         {
             Survivors = new List<Survivor>();
-            Level = "Blue";
+            Level = Levels.BLUE;
         }
 
         public void AddSurvivor(Survivor player)
@@ -24,6 +24,11 @@ namespace ZombieKata.Game
         public bool IsOver()
         {
             return Survivors.TrueForAll(survivor => survivor.IsDead);
+        }
+
+        public void SetLevel()
+        {
+            
         }
     }
 }

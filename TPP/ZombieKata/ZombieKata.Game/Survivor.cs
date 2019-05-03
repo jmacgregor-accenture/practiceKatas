@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using static ZombieKata.Game.Globals;
+using static ZombieKata.Game.Levels;
 
 namespace ZombieKata.Game
 {
@@ -13,7 +13,7 @@ namespace ZombieKata.Game
         public int EquipmentCapacity { get; set; }
         public List<Equipment> Equipment { get; set; }
         public int Experience { get; set; }
-        public string Level { get; set; }
+        public Level Level { get; set; }
 
         public Survivor(string name)
         {
@@ -21,8 +21,7 @@ namespace ZombieKata.Game
             ActionsPerTurn = 3;
             EquipmentCapacity = DEFAULT_EQUIPMENT_CAPACITY;
             Equipment = new List<Equipment>();
-            Level = "Blue";
-        }
+            Level = Levels.BLUE;        }
 
         public void Harm()
         {
@@ -46,11 +45,11 @@ namespace ZombieKata.Game
 
         private void SetLevel()
         {    
-            foreach (var (key, value) in Levels)
+            foreach (var level in ALL_LEVELS)
             {
-                if (Experience > value)
+                if (Experience > level.Value)
                 {
-                    Level = key;
+                    Level = level;
                 }
             }
         }

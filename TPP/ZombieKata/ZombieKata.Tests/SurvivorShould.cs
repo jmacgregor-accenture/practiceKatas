@@ -1,8 +1,9 @@
+using System.Linq;
 using Xunit;
 using Shouldly;
 using ZombieKata.Game;
 using static ZombieKata.Tests.SurvivorFactory;
-using static ZombieKata.Game.Globals;
+using static ZombieKata.Game.Levels;
 
 namespace ZombieKata.Tests
 {
@@ -94,12 +95,12 @@ namespace ZombieKata.Tests
         [Fact]
         public void NotAdvanceWhenThresholdIsNotCrossed()
         {
-            var orangeThreshold = Levels["Orange"];
+            var orangeThreshold = ORANGE.Value;
             _survivor = CreateHealthyPhillip();
 
             AddManyExperience(orangeThreshold);
             
-            _survivor.Level.ShouldBe("Yellow");
+            _survivor.Level.ShouldBe(YELLOW);
         }
 
         [Theory]
@@ -107,9 +108,11 @@ namespace ZombieKata.Tests
         [InlineData("Orange", "Orange")]
         [InlineData("Red", "Red")]
         public void AdvanceToCorrectLevelBasedOnExperienceEarned(string levelThreshold, 
-            string expectedLevel)
+            string expectedLevelName)
         {
-            var threshold = Levels[levelThreshold];
+            var threshold = ALL_LEVELS
+                .First(level => level.Name == levelThreshold).Value;
+            var expectedLevel = ALL_LEVELS.Find(level => level.Name == expectedLevelName);
             _survivor = CreateHealthyPhillip();
             
             AddManyExperience(threshold + 1);

@@ -55,7 +55,7 @@ namespace ZombieKata.Tests
         {
             _survivor = CreateHealthyPhillip();
             
-            _survivor.Level.ShouldBe("Blue");
+            _survivor.Level.ShouldBe(Levels.BLUE);
         }
 
         [Fact]

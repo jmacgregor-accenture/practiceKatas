@@ -2,19 +2,19 @@ using System.Collections.Generic;
 
 namespace ZombieKata.Game
 {
-    public static class Globals
+    public static class Levels
     {
-        public static Dictionary<string,int> Levels
-        {
-            get { return _levels; }
-        }
+        public static Level BLUE = new Level {Name = "Blue", Value = -1};
+        public static Level YELLOW = new Level {Name = "Yellow", Value = 6};
+        public static Level ORANGE = new Level {Name = "Orange", Value = 18};
+        public static Level RED = new Level {Name = "Red", Value = 42};
         
-        private static Dictionary<string, int> _levels = new Dictionary<string, int>
+        public static List<Level> ALL_LEVELS = new List<Level>
         {
-            {"Blue", -1},
-            {"Yellow", 6},
-            {"Orange", 18},
-            {"Red", 42}
+            BLUE,
+            YELLOW,
+            ORANGE,
+            RED
         };
     }
 }
