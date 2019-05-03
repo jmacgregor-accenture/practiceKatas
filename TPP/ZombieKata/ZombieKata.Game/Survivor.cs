@@ -13,6 +13,7 @@ namespace ZombieKata.Game
         public int EquipmentCapacity { get; set; }
         public List<Equipment> Equipment { get; set; }
         public int Experience { get; set; }
+        public string Level { get; set; }
 
         public Survivor(string name)
         {
@@ -20,6 +21,7 @@ namespace ZombieKata.Game
             ActionsPerTurn = 3;
             EquipmentCapacity = DEFAULT_EQUIPMENT_CAPACITY;
             Equipment = new List<Equipment>();
+            Level = "Blue";
         }
 
         public void Harm()

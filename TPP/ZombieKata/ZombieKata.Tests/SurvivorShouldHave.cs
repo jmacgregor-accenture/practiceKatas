@@ -41,6 +41,22 @@ namespace ZombieKata.Tests
 
             _survivor.EquipmentCapacity.ShouldBe(5);
         }
+        
+        [Fact]
+        public void CorrectStartingExperience()
+        {
+            _survivor = CreateHealthyPhillip();
+
+            _survivor.Experience.ShouldBe(0);
+        }
+
+        [Fact]
+        public void CorrectStartingLevel()
+        {
+            _survivor = CreateHealthyPhillip();
+            
+            _survivor.Level.ShouldBe("Blue");
+        }
 
         [Fact]
         public void EmptyEquipmentListWhenStarting()
@@ -51,12 +67,6 @@ namespace ZombieKata.Tests
             _survivor.Equipment.Count.ShouldBe(0);
         }
 
-        [Fact]
-        public void StartingExperienceOfZero()
-        {
-            _survivor = CreateHealthyPhillip();
-
-            _survivor.Experience.ShouldBe(0);
-        }
+        
     }
 }
