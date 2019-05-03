@@ -53,5 +53,10 @@ namespace ZombieKata.Game
                 }
             }
         }
+
+        public void AddEquipment(Equipment equipmentToAdd)
+        {
+            Equipment.Add(equipmentToAdd);
+        }
     }
 }

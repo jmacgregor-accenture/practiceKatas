@@ -67,6 +67,17 @@ namespace ZombieKata.Tests
             _survivor.EquipmentCapacity.ShouldBe(4);
         }
 
+        [Fact]
+        public void AddEquipmentToInventory()
+        {
+            _survivor = CreateHealthyPhillip();
+            var foundEquipment = new Equipment("Cheese Whiz");
+
+            _survivor.AddEquipment(foundEquipment);
+            
+            _survivor.Equipment.ShouldContain(foundEquipment);
+        }
+
         [Fact(Skip = "Placeholder to remember to add equipment reduction")]
         public void DiscardEquipmentWhenCarryingMoreThanNewCapacity()
         {
