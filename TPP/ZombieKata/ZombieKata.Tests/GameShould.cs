@@ -23,6 +23,7 @@ namespace ZombieKata.Tests
             game.AddSurvivor(newSurvivor);
             
             game.Survivors.Count.ShouldBe(1);
+            game.History.Count.ShouldBe(2);
             game.History.ShouldContain($"{newSurvivor.Name} Added!");
         }
 
@@ -111,7 +112,7 @@ namespace ZombieKata.Tests
         {
             var game = new ZombieGame();
 
-            game.History.ShouldContain("The Game Is Afoot!");
+            game.History[0].ShouldContain("The Game Is Afoot!");
         }
     }
 }

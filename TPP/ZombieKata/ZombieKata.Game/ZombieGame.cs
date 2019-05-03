@@ -8,13 +8,16 @@ namespace ZombieKata.Game
     {
         public List<Survivor> Survivors { get;  }
         public Level Level { get; set; }
-        public string History { get; set; }
+        public List<string> History { get; set; }
 
         public ZombieGame()
         {
             Survivors = new List<Survivor>();
             Level = Levels.BLUE;
-            History = $"The Game is Afoot! {DateTime.Now}";
+            History = new List<string>
+            {
+                $"The Game is Afoot! {DateTime.Now}"
+            };
         }
 
         public void AddSurvivor(Survivor player)
@@ -22,7 +25,7 @@ namespace ZombieKata.Game
             if (Survivors.Any(survivor => survivor.Name == player.Name)) return;
             
             Survivors.Add(player);
-            History += $"{player.Name} Added!";
+            History.Add($"{player.Name} Added!");
         }
 
         public bool IsOver()
