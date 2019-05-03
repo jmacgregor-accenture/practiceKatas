@@ -41,6 +41,11 @@ namespace ZombieKata.Game
         {
             Experience++;
 
+            SetLevel();
+        }
+
+        private void SetLevel()
+        {
             if (Experience > 6)
             {
                 Level = "Yellow";
