@@ -104,5 +104,13 @@ namespace ZombieKata.Tests
             
             game.Level.ShouldBe(Levels.ORANGE);
         }
+
+        [Fact]
+        public void RecordWhenGameStarts()
+        {
+            var game = new ZombieGame();
+
+            game.Log.ShouldContain("The Game Is Afoot!");
+        }
     }
 }

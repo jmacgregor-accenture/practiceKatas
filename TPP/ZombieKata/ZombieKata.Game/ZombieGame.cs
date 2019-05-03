@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -7,11 +8,13 @@ namespace ZombieKata.Game
     {
         public List<Survivor> Survivors { get;  }
         public Level Level { get; set; }
+        public string Log { get; set; }
 
         public ZombieGame()
         {
             Survivors = new List<Survivor>();
             Level = Levels.BLUE;
+            Log = $"The Game is Afoot! {DateTime.Now}";
         }
 
         public void AddSurvivor(Survivor player)
