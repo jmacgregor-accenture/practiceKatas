@@ -24,7 +24,7 @@ namespace ZombieKata.Tests
             
             game.Survivors.Count.ShouldBe(1);
             game.History.Count.ShouldBe(2);
-            game.History.ShouldContain($"{newSurvivor.Name} Added!");
+            game.History[1].ShouldContain($"{newSurvivor.Name} Added!");
         }
 
         [Fact]

@@ -16,7 +16,7 @@ namespace ZombieKata.Game
             Level = Levels.BLUE;
             History = new List<string>
             {
-                $"The Game is Afoot! {DateTime.Now}"
+                $"{DateTime.Now}: The Game is Afoot!"
             };
         }
 
@@ -25,7 +25,7 @@ namespace ZombieKata.Game
             if (Survivors.Any(survivor => survivor.Name == player.Name)) return;
             
             Survivors.Add(player);
-            History.Add($"{player.Name} Added!");
+            History.Add($"{DateTime.Now}: {player.Name} Added!");
         }
 
         public bool IsOver()
