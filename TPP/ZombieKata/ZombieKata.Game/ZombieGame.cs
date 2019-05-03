@@ -28,7 +28,12 @@ namespace ZombieKata.Game
 
         public void SetLevel()
         {
-            Level = Survivors.Select(survivor => survivor.Level).Max();
+            if (Survivors.Count <= 0) return;
+            
+            var maxValue = Survivors.Select(survivor => survivor.Level.Value).Max();
+
+            Level = Levels.ALL_LEVELS.Find(level => level.Value == maxValue);
+
         }
     }
 }

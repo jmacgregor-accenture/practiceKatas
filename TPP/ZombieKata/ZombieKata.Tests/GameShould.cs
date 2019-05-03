@@ -88,5 +88,21 @@ namespace ZombieKata.Tests
             
             game.Level.ShouldBe(Levels.YELLOW);
         }
+
+        [Fact]
+        public void PickHighestLevelFromTwoPlayers()
+        {
+            var game = new ZombieGame();
+            var survivorOne = new Survivor("Charles");
+            survivorOne.Level = Levels.ORANGE;
+            var survivorTwo = new Survivor("Phillip");
+            survivorTwo.Level = Levels.YELLOW;
+            game.AddSurvivor(survivorOne);
+            game.AddSurvivor(survivorTwo);
+            
+            game.SetLevel();
+            
+            game.Level.ShouldBe(Levels.ORANGE);
+        }
     }
 }
