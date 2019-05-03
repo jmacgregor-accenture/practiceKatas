@@ -51,5 +51,21 @@ namespace ZombieKata.Tests
 
             result.ShouldBeTrue();
         }
+
+        [Fact]
+        public void NotEndIfAnyoneIsLeftAlive()
+        {
+            var game = new ZombieGame();
+            var survivor = new Survivor("Harry");
+            var survivor2 = new Survivor("William");
+            survivor.Harm();
+            survivor.Harm();
+            game.AddSurvivor(survivor);
+            game.AddSurvivor(survivor2);
+
+            var result = game.IsOver();
+
+            result.ShouldBeFalse();
+        }
     }
 }
