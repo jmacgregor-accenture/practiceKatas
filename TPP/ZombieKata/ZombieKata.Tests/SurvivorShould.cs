@@ -9,6 +9,14 @@ namespace ZombieKata.Tests
     public class SurvivorShould
     {
         private Survivor _survivor;
+        
+        private void AddManyExperience(int amountOfExperience)
+        {
+            for (var i = 0; i < amountOfExperience; i++)
+            {
+                _survivor.AddExperience();
+            }
+        }
 
         [Fact]
         public void BeWoundedWhenHarmed()
@@ -118,12 +126,17 @@ namespace ZombieKata.Tests
             _survivor.Level.ShouldBe("Yellow");
         }
 
-        private void AddManyExperience(int amountOfExperience)
+        [Theory]
+        [InlineData("Red", "Red")]
+        public void AdvanceToRedWhenCrossingExperienceThreshold(string levelThreshold, 
+            string expectedLevel)
         {
-            for (var i = 0; i < amountOfExperience; i++)
-            {
-                _survivor.AddExperience();
-            }
+            var threshold = Levels[levelThreshold];
+            _survivor = CreateHealthyPhillip();
+            
+            AddManyExperience(threshold + 1);
+            
+            _survivor.Level.ShouldBe(expectedLevel);
         }
     }
 }

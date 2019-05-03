@@ -13,7 +13,8 @@ namespace ZombieKata.Game
         {
             {"Blue", -1},
             {"Yellow", 6},
-            {"Orange", 18}
+            {"Orange", 18},
+            {"Red", 42}
         };
     }
 }
