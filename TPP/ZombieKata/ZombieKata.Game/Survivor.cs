@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using static ZombieKata.Game.Globals;
 
 namespace ZombieKata.Game
 {
@@ -46,12 +46,12 @@ namespace ZombieKata.Game
 
         private void SetLevel()
         {
-            if (Experience > 6)
+            if (Experience > Levels["Yellow"])
             {
                 Level = "Yellow";
             }
 
-            if (Experience > 18)
+            if (Experience > Levels["Orange"])
             {
                 Level = "Orange";
             }

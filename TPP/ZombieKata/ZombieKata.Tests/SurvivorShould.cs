@@ -1,8 +1,8 @@
-using System.Globalization;
 using Xunit;
 using Shouldly;
 using ZombieKata.Game;
 using static ZombieKata.Tests.SurvivorFactory;
+using static ZombieKata.Game.Globals;
 
 namespace ZombieKata.Tests
 {
