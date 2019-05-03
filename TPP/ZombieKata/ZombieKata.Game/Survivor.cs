@@ -56,7 +56,11 @@ namespace ZombieKata.Game
 
         public void AddEquipment(Equipment equipmentToAdd)
         {
-            Equipment.Add(equipmentToAdd);
+            if (Equipment.Count < EquipmentCapacity)
+            {
+                Equipment.Add(equipmentToAdd);
+            }
+            
         }
     }
 }
