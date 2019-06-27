@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExploreTPP.Library", "ExploreTPP.Library\ExploreTPP.Library.csproj", "{E8866BD5-85EA-42B3-9664-E3DABF75226A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExploreTPP.Tests", "ExploreTPP.Tests\ExploreTPP.Tests.csproj", "{E2C1B3E1-263B-4F4E-A4A3-2B0CF32AFA6F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E8866BD5-85EA-42B3-9664-E3DABF75226A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8866BD5-85EA-42B3-9664-E3DABF75226A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8866BD5-85EA-42B3-9664-E3DABF75226A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8866BD5-85EA-42B3-9664-E3DABF75226A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2C1B3E1-263B-4F4E-A4A3-2B0CF32AFA6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2C1B3E1-263B-4F4E-A4A3-2B0CF32AFA6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2C1B3E1-263B-4F4E-A4A3-2B0CF32AFA6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2C1B3E1-263B-4F4E-A4A3-2B0CF32AFA6F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

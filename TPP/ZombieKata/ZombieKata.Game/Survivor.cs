@@ -22,7 +22,8 @@ namespace ZombieKata.Game
             ActionsPerTurn = 3;
             EquipmentCapacity = DEFAULT_EQUIPMENT_CAPACITY;
             Equipment = new List<Equipment>();
-            Level = Levels.BLUE;        }
+            Level = BLUE;        
+        }
 
         public void Harm()
         {
