@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriceManagement", "PriceManagement\PriceManagement.csproj", "{23D82997-5484-4689-8292-F5B88B44D5EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriceManagement.Tests", "PriceManagement.Tests\PriceManagement.Tests.csproj", "{CD8F9EA1-1958-478A-B927-9DAF50AEC6C1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{23D82997-5484-4689-8292-F5B88B44D5EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23D82997-5484-4689-8292-F5B88B44D5EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23D82997-5484-4689-8292-F5B88B44D5EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23D82997-5484-4689-8292-F5B88B44D5EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD8F9EA1-1958-478A-B927-9DAF50AEC6C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD8F9EA1-1958-478A-B927-9DAF50AEC6C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD8F9EA1-1958-478A-B927-9DAF50AEC6C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD8F9EA1-1958-478A-B927-9DAF50AEC6C1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
