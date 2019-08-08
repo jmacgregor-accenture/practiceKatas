@@ -4,14 +4,16 @@ namespace BowlingKata.Game
 {
     public class BowlingGame
     {
-        public void Roll(int pins) 
+        private int _pinsStruck;
+        
+        public void Roll(int pins)
         {
-
+            _pinsStruck = pins;
         }
 
         public int Score() 
         {
-            return 0;
+            return _pinsStruck;
         }
     }
 }

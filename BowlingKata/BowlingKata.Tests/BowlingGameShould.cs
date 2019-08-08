@@ -18,5 +18,15 @@ namespace BowlingKata.Tests
             
             score.ShouldBe(0);
         }
+
+        [Fact]
+        public void ScoreOneForOnePin()
+        {
+            var game = new BowlingGame();
+            
+            game.Roll(1);
+            
+            game.Score().ShouldBe(1);
+        }
     }
 }
