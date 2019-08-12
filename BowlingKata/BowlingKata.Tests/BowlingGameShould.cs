@@ -12,8 +12,13 @@ namespace BowlingKata.Tests
         public void ScoreZeroForZeroPins()
         {
             var game = new BowlingGame();
+
+            for (var frame = 0; frame < 10; frame++)
+            {
+                game.Roll(0);
+            }
             
-            game.Roll(0);
+            
             var score = game.Score();
             
             score.ShouldBe(0);
@@ -25,6 +30,11 @@ namespace BowlingKata.Tests
             var game = new BowlingGame();
             
             game.Roll(1);
+            
+            for (var frame = 1; frame < 10; frame++)
+            {
+                game.Roll(0);
+            }
             
             game.Score().ShouldBe(1);
         }

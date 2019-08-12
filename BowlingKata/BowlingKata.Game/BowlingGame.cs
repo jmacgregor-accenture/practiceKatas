@@ -8,7 +8,7 @@ namespace BowlingKata.Game
         
         public void Roll(int pins)
         {
-            _pinsStruck = pins;
+            _pinsStruck += pins;
         }
 
         public int Score() 
