@@ -8,35 +8,45 @@ namespace BowlingKata.Tests
 {
     public class BowlingGameShould
     {
+        private BowlingGame _game;
+        
+        private void RollFrames(int frames, int pins = 0)
+        {
+            for (var frame = 0; frame < frames; frame++)
+            {
+                _game.Roll(pins);
+            }
+        }
+        
         [Fact]
         public void ScoreZeroForZeroPins()
         {
-            var game = new BowlingGame();
+            _game = new BowlingGame();
 
-            for (var frame = 0; frame < 10; frame++)
-            {
-                game.Roll(0);
-            }
+            RollFrames(10);
             
-            
-            var score = game.Score();
-            
-            score.ShouldBe(0);
+            _game.Score().ShouldBe(0);
         }
 
         [Fact]
         public void ScoreOneForOnePin()
         {
-            var game = new BowlingGame();
+            _game = new BowlingGame();
             
-            game.Roll(1);
+            _game.Roll(1);
+            RollFrames(9);
             
-            for (var frame = 1; frame < 10; frame++)
-            {
-                game.Roll(0);
-            }
+            _game.Score().ShouldBe(1);
+        }
+
+        [Fact]
+        public void ScoreTenWithOnePinEachFrame()
+        {
+            _game = new BowlingGame();
             
-            game.Score().ShouldBe(1);
+            RollFrames(10, 1);
+            
+            _game.Score().ShouldBe(10);
         }
     }
 }
