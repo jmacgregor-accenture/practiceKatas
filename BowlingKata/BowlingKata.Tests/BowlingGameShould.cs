@@ -10,9 +10,9 @@ namespace BowlingKata.Tests
     {
         private BowlingGame _game;
         
-        private void RollFrames(int frames, int pins = 0)
+        private void RollPins(int rolls, int pins = 0)
         {
-            for (var frame = 0; frame < frames; frame++)
+            for (var roll = 0; roll < rolls; roll++)
             {
                 _game.Roll(pins);
             }
@@ -23,7 +23,7 @@ namespace BowlingKata.Tests
         {
             _game = new BowlingGame();
 
-            RollFrames(10);
+            RollPins(20);
             
             _game.Score().ShouldBe(0);
         }
@@ -34,7 +34,7 @@ namespace BowlingKata.Tests
             _game = new BowlingGame();
             
             _game.Roll(1);
-            RollFrames(9);
+            RollPins(19);
             
             _game.Score().ShouldBe(1);
         }
@@ -44,9 +44,32 @@ namespace BowlingKata.Tests
         {
             _game = new BowlingGame();
             
-            RollFrames(10, 1);
+            RollPins(20, 1);
             
-            _game.Score().ShouldBe(10);
+            _game.Score().ShouldBe(20);
+        }
+
+        [Fact]
+        public void HaveTwentyRollsWithNoSparesOrStrikes()
+        {
+            _game = new BowlingGame();
+            
+            RollPins(20,3);
+
+            _game.Rolls.ShouldBe(20);
+        }
+
+        [Fact(Skip = "Refactor")]
+        public void ScoreSpareAsTenPlusNextRoll()
+        {
+            _game = new BowlingGame();
+            
+            _game.Roll(3);
+            _game.Roll(7);
+            _game.Roll(3);
+            RollPins(7);
+            
+            _game.Score().ShouldBe(16);
         }
     }
 }
